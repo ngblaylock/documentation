@@ -1,4 +1,5 @@
 module.exports = {
+    dest: '/docs',
     title: "Nathan's Docs",
     description: 'Just playing around',
     themeConfig: {
@@ -47,7 +48,8 @@ module.exports = {
                     '/other/fontawesome',
                     '/other/tabletopjs',
                     '/other/wow-animate',
-                    '/other/vscode'
+                    '/other/vscode',
+                    '/other/desktopapps'
                 ]
             }
         ]
