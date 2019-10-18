@@ -3,12 +3,13 @@
 ## Using HTML in Vuepress
 
 ``` html
-<p>This is a paragraph with a <span style='color: green;'>span</span> tag.</p>
+<p style="color: blue;">This is a paragraph with a <span style='color: green;'>span</span> tag.</p>
 ```
 
 produces:
 
-<p>This is a paragraph with a <span style='color: green;'>span</span> tag.</p>
+<p style="color: blue;">This is a paragraph with a <span style='color: green;'>span</span> tag.</p>
+
 
 ## Run in Development Mode
 
