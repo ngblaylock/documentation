@@ -2,6 +2,8 @@
 
 ## Install Vuepress
 
+You only need to do this once per computer.
+
 ```
 sudo npm install -g vuepress
 ```
