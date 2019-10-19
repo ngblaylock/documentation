@@ -17,11 +17,18 @@ produces:
 sudo vuepress dev
 ```
 
-
 ## Build for Production
 
 ``` shell
 sudo vuepress build
 ```
 
-This will build the project to the `.vuepress/dist/` directory. Try to figure out how to get it to the `../docs` directory for easy Github deployment.
+## Build to the docs folder for easy GitHub Deployment
+
+Add the following to the `.vuepress/config.js` file.
+
+``` js
+dest: 'docs',
+```
+
+The default is dest: `dest: '.vuepress/dist'`.
