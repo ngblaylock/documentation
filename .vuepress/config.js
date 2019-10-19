@@ -1,5 +1,5 @@
 module.exports = {
-    dest: '/docs',
+    dest: 'docs',
     title: "Nathan's Docs",
     description: 'Just playing around',
     themeConfig: {
