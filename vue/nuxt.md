@@ -6,7 +6,7 @@
 
 Go to the command line and `cd` into the folder where you want the project to be located. Enter the following command:
 
-``` shell
+```
 npm create nuxt-app <project-name>
 ```
 
@@ -28,7 +28,7 @@ generate: {
 
 This will build a page to the docs folder, which Github can host from the master component. More on this later. In the terminal, enter the following command:
 
-``` shell
+```
 npm run generate
 ```
 
@@ -48,7 +48,7 @@ The first part is to create a `CNAME` file in the `static` folder in the Nuxt pr
 
 Now go to [domains.google.com](https://domains.google.com) add add the following for a subdomain:
 
-``` shell
+```
 <subdomain> CNAME 1h ngblaylock.github.io.
 ```
 

@@ -1,5 +1,13 @@
 # Vuepress
 
+## Install Vuepress
+
+You only need to do this once per computer.
+
+```
+sudo npm install -g vuepress
+```
+
 ## Using HTML in Vuepress
 
 ``` html
@@ -13,13 +21,13 @@ produces:
 
 ## Run in Development Mode
 
-``` shell
+```
 sudo vuepress dev
 ```
 
 ## Build for Production
 
-``` shell
+```
 sudo vuepress build
 ```
 
