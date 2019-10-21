@@ -40,3 +40,7 @@ dest: 'docs',
 ```
 
 The default is dest: `dest: '.vuepress/dist'`.
+
+## Folder Permissions
+
+So, aparently, the default behavior of the `docs` folder produced in the build only gives you read access. Normally, this would be fine, but if you are working on it with multiple computers, pushing and pulling from GitHub will throw an error saying that there are not sufficient permissions. To fix this, you need to right click the `docs` folder and select `Get Info`. Then add your username (on the computer) and set your permissions to `Read-Write`.

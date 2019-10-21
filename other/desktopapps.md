@@ -22,7 +22,7 @@
 - Set up where to save screenshots. Enter the following in the terminal
   - `command + space` type screensot. Options, change to Downloads.
 - Open Dock Preferences, turn off: Show recent applications in Dock
-
+- For using `space` for things like cancel, or replace, go to System Preferences > Keyboard > Shortcuts > Select the box that says `Use keyboard navigation to move focus between controls`
 - Reset the default wallpaper to Unsplash
 
 ## Applications
