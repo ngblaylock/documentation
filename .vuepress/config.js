@@ -45,6 +45,7 @@ module.exports = {
                 title: 'Other',
                 children: [
                     '/other/',
+                    '/other/extras',
                     '/other/fontawesome',
                     '/other/tabletopjs',
                     '/other/wow-animate',
@@ -53,5 +54,12 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    configureWebpack: {
+        resolve: {
+          alias: {
+            '@alias': '/images'
+          }
+        }
+      }
 }

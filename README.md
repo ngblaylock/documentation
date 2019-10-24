@@ -1,8 +1,8 @@
 ---
 home: true
-heroImage: https://vuepress.vuejs.org/hero.png
-heroText: Hero Title
-tagline: Hero subtitle
+heroImage: /hero.png
+heroText: Nathan Blaylock Media
+tagline: Documentation
 actionText: Get Started →
 actionLink: /vue/
 features:
