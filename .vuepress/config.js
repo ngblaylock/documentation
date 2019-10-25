@@ -24,7 +24,7 @@ module.exports = {
         ],
         sidebar: [
             {
-              title: 'Vue.js',   // required
+              title: 'Vue.js',
               children: [
                 '/vue/',
                 '/vue/cli',
@@ -33,11 +33,11 @@ module.exports = {
               ]
             },
             {
-                title: 'Firebase',   // required
+                title: 'Firebase',
                 children: [
                     '/firebase/',
-                    '/firebase/authentication',
                     '/firebase/hosting',
+                    '/firebase/authentication',
                     '/firebase/firestore'
                 ]
             },
@@ -46,6 +46,7 @@ module.exports = {
                 children: [
                     '/other/',
                     '/other/extras',
+                    '/other/bootstrap4',
                     '/other/fontawesome',
                     '/other/tabletopjs',
                     '/other/wow-animate',

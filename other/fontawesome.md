@@ -9,5 +9,5 @@ Here is a link to the [Font Awesome Free](https://fontawesome.com/icons?d=galler
 Here is my personal CDN for using Font Awesome
 
 ``` html
-<script src="https://kit.fontawesome.com/1a34456532.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 ```
