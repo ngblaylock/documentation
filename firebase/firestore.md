@@ -1,6 +1,6 @@
 # Firestore
 
-## Read Data
+## Initialize
 
 Start out by getting the project set up. Some things that you are going to need are the SDK. Put this in order, before any custom scripts that you write.
 
@@ -46,6 +46,10 @@ db.collection('collectionName').get().then(snapshot => {
 })
 ```
 
+### Realtime Listener
+
+Instead of using the `.get().then()` method, you can use `onShapshot()` which will listen for changes in the database and update it automatically so you do not need to refresh the page
+
 ## Write Data
 
 When you are writing data, be sure to always give a reference with the unique id for each. Try storing it in a `data-id` attribute or something like that.
@@ -89,3 +93,5 @@ db.collection("collectionName").doc("docName").update({
     name: "Sydney"
 });
 ```
+
+## TODO: Firebase Security Rules

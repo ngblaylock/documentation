@@ -37,8 +37,8 @@ module.exports = {
                 children: [
                     '/firebase/',
                     '/firebase/hosting',
-                    '/firebase/authentication',
-                    '/firebase/firestore'
+                    '/firebase/firestore',
+                    '/firebase/authentication'
                 ]
             },
             {
