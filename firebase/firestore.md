@@ -48,7 +48,7 @@ db.collection('collectionName').get().then(snapshot => {
 
 ### Realtime Listener
 
-Instead of using the `.get().then()` method, you can use `onShapshot()` which will listen for changes in the database and update it automatically so you do not need to refresh the page
+Instead of using the `.get().then()` method, you can use `.onShapshot()` which will listen for changes in the database and update it automatically so you do not need to refresh the page
 
 ## Write Data
 
