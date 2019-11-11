@@ -42,13 +42,25 @@ Once that is set up, you can go into `app.js` and add the following code to get 
 db.collection('collectionName').get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         console.log(doc.data());
-    })
-})
+    });
+}).catch(err => {
+    console.log(err.message);
+});
 ```
 
 ### Realtime Listener
 
-Instead of using the `.get().then()` method, you can use `.onShapshot()` which will listen for changes in the database and update it automatically so you do not need to refresh the page
+Instead of using the `.get().then()` method, you can use `.onShapshot()` which will listen for changes in the database and update it automatically so you do not need to refresh the page. With an error message, it would look like the following:
+
+``` js
+db.collection('collectionName').onSnapshot(snapshot => {
+    snapshot.docs.forEach(doc => {
+        console.log(doc.data());
+    })
+}, err => {
+    console.log(err.message);
+});
+```
 
 ## Write Data
 
