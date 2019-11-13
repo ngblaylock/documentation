@@ -14,7 +14,25 @@ Make sure to use Prettier rather than ES Lint.
 
 ### Step 2 — Set up the SCSS files
 
-See the `style` page for more information.
+In order to use Sass in your nuxt project, you need to install in the `node-sass` and `sass-loader` webpack loaders.
+
+```
+npm install --save-dev node-sass sass-loader
+```
+
+When changing default style with Nuxt:
+1. Create a `style/custom.scss` file in the `assets` directory. 
+2. Comment out `'bootstrap-vue/nuxt'`, from the `nuxt.config.js` file under `modules`.
+3. Add `'@/assets/style/custom.scss'` in the `nuxt.config.js` file in the `css: []` object.
+4. Inside the `style/custom.scss` file, enter the following:
+
+``` scss
+$primary: rgb(104, 9, 9);
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/bootstrap-vue/src/index.scss';
+```
+
+Variables to override default bootstrap should go at the top of the page.
 
 ### Step 3 — Generate
 
