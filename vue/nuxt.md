@@ -51,6 +51,7 @@ bootstrapVue: {
 
 ``` scss
 @import "~assets/style/_custom-vars.scss";
+// or: @import "~assets/style/custom-vars";
 ```
 
 ## Generate Nuxt project
