@@ -28,6 +28,7 @@ module.exports = {
               children: [
                 '/vue/',
                 '/vue/cli',
+                '/vue/vuex',
                 '/vue/nuxt',
                 '/vue/vuepress'
               ]

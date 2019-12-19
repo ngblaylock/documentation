@@ -12,10 +12,20 @@ Use this boilerplate for your standard HTML page. It works well when you need to
 
 <script>
     var app = new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue!'
-    }
+      el: '#app',
+      data: {
+          message: 'Hello Vue!'
+      },
+      computed: {
+        reversedMessageComputed: function () {
+          return this.message.split('').reverse().join('')
+        }
+      },
+      methods: {
+        reverseMessageMethod: function () {
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
     })
 </script>
 ```
@@ -33,4 +43,5 @@ Use the following if you are ready for production
 - `v-on:click="someting"` (`@click="something"`)
 - `v-model="something"`
 - `v-if="something"`, `v-else-if="something"`, `v-else="something"`
-
+- `v-for="thing in things" v-bind:key="thing.id"`, `v-for="(thing, index) in things"`
+- For more details, see the [Vue.js Essentials Cheat Sheet](https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf) by Vue Mastery.
