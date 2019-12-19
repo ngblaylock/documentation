@@ -45,3 +45,37 @@ Use the following if you are ready for production
 - `v-if="something"`, `v-else-if="something"`, `v-else="something"`
 - `v-for="thing in things" v-bind:key="thing.id"`, `v-for="(thing, index) in things"`
 - For more details, see the [Vue.js Essentials Cheat Sheet](https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf) by Vue Mastery.
+
+## Axios with Vue
+Axios is a library that handles asynchronous requests. This is much more backwards compatable than using `fetch()`, but it does require loading it through either NPM or as a CDN.
+
+``` html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+```
+
+Axios should be loaded in the `mounted()` lifecycle hook. Use the following code to get started with Axios and Vue:
+
+``` html
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        users: null,
+        loading: true
+      }
+    },
+    mounted() {
+      axios
+        .get('https://jsonplaceholder.typicode.com/users')
+        .then(response => {
+          this.users = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        .finally(() => this.loading = false)
+    }
+  })
+</script>
+```
