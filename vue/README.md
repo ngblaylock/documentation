@@ -47,7 +47,7 @@ Use the following if you are ready for production
 - For more details, see the [Vue.js Essentials Cheat Sheet](https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf) by Vue Mastery.
 
 ## Axios with Vue
-Axios is a library that handles asynchronous requests. This is much more backwards compatable than using `fetch()`, but it does require loading it through either NPM or as a CDN.
+Axios is a library that handles asynchronous requests. This is much more backwards compatable than using `fetch()`, but it does require loading it through either NPM or as a CDN. For a full example on how to use Axios with Vue, check out the [Vue Cookbook](https://vuejs.org/v2/cookbook/using-axios-to-consume-apis.html).
 
 ``` html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
