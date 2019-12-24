@@ -18,16 +18,15 @@ Use this boilerplate for your standard HTML page. It works well when you need to
       },
       computed: {
         reversedMessageComputed: function () {
-          return this.message.split('').reverse().join('')
+          // this should always return something
         }
       },
       methods: {
         reverseMessageMethod: function () {
-          this.message = this.message.split('').reverse().join('')
+          // no need to return anything
         }
       },
       watch: {
-        // whenever question changes, this function will run
         dataName: function() {
           // dataName is the key in the data object that is watching for a change
         }
