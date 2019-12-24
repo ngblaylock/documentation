@@ -46,13 +46,14 @@ module.exports = {
                 title: 'Other',
                 children: [
                     '/other/',
-                    '/other/extras',
                     '/other/bootstrap4',
+                    '/other/desktopapps',
+                    '/other/extras',
                     '/other/fontawesome',
+                    '/other/forms',
                     '/other/tabletopjs',
-                    '/other/wow-animate',
                     '/other/vscode',
-                    '/other/desktopapps'
+                    '/other/wow-animate'
                 ]
             }
         ]
