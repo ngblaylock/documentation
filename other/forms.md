@@ -29,7 +29,7 @@ If you are using Vue or Nuxt, then you should use a watcher:
 ``` js
 watch: {
     // whenever the honeypot question is filled, run spamLock, which changes the
-    // form submit link to some bogus link, then forces the math question to show up. 
+    // form submit link to some bogus link, then forces the math question to show up.
     spamLock: function() {
       this.formActionLink = "https://docs.google.com/forms/spamPrevent";
       this.solveRequired = true;
