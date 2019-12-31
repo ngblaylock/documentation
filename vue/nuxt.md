@@ -4,7 +4,7 @@
 Go to the command line and `cd` into the folder where you want the project to be located. Enter the following command:
 
 ```
-npm create nuxt-app <project-name>
+npx create-nuxt-app <project-name>
 ```
 
 - Use Bootstrap-Vue
