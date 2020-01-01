@@ -152,10 +152,16 @@ Axios should be loaded in the `created()` lifecycle hook. Use the following code
           this.users = response.data
         })
         .catch(error => {
-          console.log(error)
+          console.error(error)
         })
         .finally(() => this.loading = false)
     }
   })
 </script>
+```
+
+Using Axios with a `.vue` file looks essentially the same, however you need to import Axios to the page. Use the following code:
+
+``` js
+import axios from 'axios';
 ```

@@ -10,6 +10,10 @@ TODO: Add in how Google Forms work on a static page
 
 ### Honeypot Spam Prevention
 
+::: warning
+This didn't really work. I ended up just putting in the math equation for everyone. It also had some tabbing issues.
+:::
+
 Using this Google Form method, you will most likely get a lot of spam bots injecting unwanted information. You can use the honeypot method to trick the spam bots to fill out information, where if filled, the form will not submit correctly. In short, create an dummy field that only spam bots can see. If it is filled out, then change the form action link. As a backup solution, you can add a simple math problem. To hide the fields from users, use the following CSS:
 
 ``` css

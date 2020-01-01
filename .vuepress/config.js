@@ -51,6 +51,7 @@ module.exports = {
                     '/other/extras',
                     '/other/fontawesome',
                     '/other/forms',
+                    '/other/js-snacks',
                     '/other/tabletopjs',
                     '/other/vscode',
                     '/other/wow-animate'
