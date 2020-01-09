@@ -10,6 +10,13 @@ npx create-nuxt-app <project-name>
 - Use Bootstrap-Vue
 - Use Prettier rather than ES Lint.
 
+## Cloned Nuxt Project from GitHub
+When using a GitHub repository for your Nuxt project, it will ignore the dependencies in the `.gitattributes` file by default. This is so you don't have to store all those files that are easily installed on GitHub. This means that when you clone the repository back down to another computer the dependencies required to run `npm run dev` will be missing and will not work. In the Nuxt `README.md` file it says to run `npm run install`, but this will not work and will give you an error. I believe this is an issue on Nuxt, because running the fillowing command will work much better. Note that there is no `run` in the command:
+
+```
+npm install
+```
+
 ## Nuxt Style with Sass
 
 In order to use Sass in your nuxt project, you need to install in the `node-sass` and `sass-loader` webpack loaders.
