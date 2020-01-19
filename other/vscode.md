@@ -11,7 +11,6 @@
 - Material Theme
 - Prettier
 - Vetur
-- Vue 2 Snippets
 
 ## Themes
 
