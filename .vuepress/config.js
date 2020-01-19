@@ -54,7 +54,6 @@ module.exports = {
                     '/other/js-snacks',
                     '/other/tabletopjs',
                     '/other/vscode',
-                    '/other/wow-animate'
                 ]
             }
         ]

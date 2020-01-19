@@ -16,3 +16,16 @@
 ## Themes
 
 -Material Theme High Contrast
+
+## Keyboard Shortcuts
+
+To add a keyboard shortcut for Emmet - Wrap with Abbreviation:
+
+``` js
+// in keybindings.json
+{
+    "key": "ctrl+shift+enter",
+    "command": "editor.emmet.action.wrapWithAbbreviation",
+    "when": "editorTextFocus && !editorReadonly"
+}
+```
