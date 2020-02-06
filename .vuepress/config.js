@@ -14,6 +14,10 @@ module.exports = {
                 link: '/vue/'
             },
             {
+                text: 'Firebase',
+                link: '/firebase/'
+            },
+            {
                 text: 'Other',
                 link: '/other/'
             },
@@ -38,8 +42,10 @@ module.exports = {
                 children: [
                     '/firebase/',
                     '/firebase/hosting',
+                    '/firebase/authentication',
                     '/firebase/firestore',
-                    '/firebase/authentication'
+                    '/firebase/securityrules',
+                    '/firebase/nuxtfire'
                 ]
             },
             {

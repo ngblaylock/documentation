@@ -105,5 +105,3 @@ db.collection("collectionName").doc("docName").update({
     name: "Sydney"
 });
 ```
-
-## TODO: Firebase Security Rules
