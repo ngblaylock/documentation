@@ -19,61 +19,40 @@ In `nuxt.config.js`, enter the following within `modules`:
 
 ```js
 modules: [
-    [
-      'nuxt-fire',
-      {
-        config: {
-            apiKey: '<apiKey>',
-            authDomain: '<authDomain>',
-            databaseURL: '<databaseURL>',
-            projectId: '<projectId>',
-            storageBucket: '<storageBucket>',
-            messagingSenderId: '<messagingSenderId>',
-            appId: '<appId>',
-            measurementId: '<measurementId>' // MIGHT NOT HAVE THIS
-        },
-        services: {
-            auth: true,
-            firestore: true
-        }
+  [
+    'nuxt-fire',
+    {
+      config: {
+        apiKey: '...',
+        authDomain: '...',
+        databaseURL: '...',
+        projectId: '...',
+        storageBucket: '...',
+        messagingSenderId: '...',
+        appId: '...',
+        measurementId: '...' // Might not have this
+      },
+      services: {
+        auth: true,
+        firestore: true,
+        storage: true
       }
-    ]
-  ],
+    }
+  ]
+]
 ```
 
-## Authentication
+## Naming
 
-Sign In with Email and Password:
+When using Nuxt-Fire, you will not need to import any firebase scripts since it is now a global script. Instead of using the conventional JavaScript naming, use the firebase nameing convention.
 
-```js
-this.$fireAuth
-  .signInWithEmailAndPassword(this.username, this.password)
-  .then(() => {
-    console.log("Login Successful");
-  })
-  .catch(error => {
-    console.error(error);
-  });
-```
+| Javascript           | Nuxt-Fire          |
+| -------------------- | ------------------ |
+| firebase.auth()      | this.\$fireAuth    |
+| firebase.firestore() | this.\$fireStore   |
+| firebase.storage()   | this.\$fireStorage |
 
-Sign Out will only occur when the user explicitly signs themself out. If you need the user to sign out automatially after the session expires, you will need to dig into the Firebase documentation.
 
-```js
-this.$fireAuth
-  .signOut()
-  .then(() => {
-    console.log("Log Out Successful");
-  })
-  .catch(error => {
-    console.log(error);
-  });
-```
-
-## Firestore
-
-Get data from the firestore using the onSnapshot. As of my experience, if you do it this way, you do not need to worry about Vuex because it will always keep in in sync. One downside to it may be that you get charged by how many reads you have. If it gets out of control, then maybe consider Vuex.
-
-Another potential issue to be aware of is if two users are using the same application and one writes new data, it will suddenly populate their webpage without any warning. I noticed that KSL and Box use a method where they only display an alert letting the user know that there is an update, and they can refresh the page to see the changes.
 
 ```js
 this.$fireStore

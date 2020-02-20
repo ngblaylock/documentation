@@ -61,5 +61,35 @@ The following is an example of the content you would recieve from `printObj;` in
 [{"name":"Bobby","favFood":"Italian","favSong":"Thriller","favAnimal":"Bear"},{"name":"Sue","favFood":"Chicken Noodle Soup","favSong":"I Wanna Dance with Somebody","favAnimal":"Beaver"},{"name":"Bill","favFood":"Steak and Potatoes","favSong":"It's Gonna Be Me","favAnimal":"Wolf"},{"name":"Sally Jo","favFood":"Caesar Salad","favSong":"Rolling in the Deep","favAnimal":"Elephant"}]
 ```
 
+## Vue and Nuxt
+
+If you are using Vue, you can still get the object through the mounted hook. You do need to use the `window.addEventListener` wrapping the tabletop script. Otherwise the CDN will load after the actual script in some cases.
+
+``` js
+head() {
+    return {
+      script: [
+        {
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'
+        }
+      ]
+    }
+  },
+mounted: function() {
+    window.addEventListener('load', () => {
+      Tabletop.init({
+        key: 'https://docs.google.com/spreadsheets/d/1cRACXmApZf1Y1FZP3RC-PdE8xFknTQl0inm_5T6c2zo/pubhtml',
+        simpleSheet: true,
+        callback: (data, tabletop) => {
+          console.log(data)
+          this.favorites = data
+          this.loading = false
+        }
+      })
+    })
+  }
+```
+
+
 ## Further Documentation
 For further information, read the [Tabletop.js Documentation](https://github.com/jsoma/tabletop).
