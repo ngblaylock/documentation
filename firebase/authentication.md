@@ -40,6 +40,10 @@ Use the auth state change to figure if there is currently a user logged in. You 
 
 ```js
 firebase.auth().onAuthStateChanged(user => {
-  // Do something with the user information
+  if (user) {
+    // Do something with the user information
+  } else {
+    // Show that there is no user logged in
+  }
 });
 ```

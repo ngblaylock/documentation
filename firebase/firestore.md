@@ -1,35 +1,6 @@
 # Firestore
 
-## Initialize
-
-Start out by getting the project set up. Some things that you are going to need are the SDK. Put this in order, before any custom scripts that you write.
-
-```html
-<!-- This is always required and must go first-->
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-
-<!-- This is required to use Firestore -->
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-
-<!-- This is the config data that is provided in the console -->
-<script>
-  var firebaseConfig = {
-    apiKey: "...",
-    authDomain: "...",
-    databaseURL: "...",
-    projectId: "...",
-    storageBucket: "...",
-    messagingSenderId: "...",
-    appId: "..."
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-<script src="app.js"></script>
-```
-
-Once that is set up, you can go into `app.js` and add the following code to get any documents in your first collection.
+Before doing any work here, you will need to configure your app using the code from the [Firebase](/firebase/README.md) page.
 
 ## Read Data
 
