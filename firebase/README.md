@@ -63,17 +63,17 @@ In `nuxt.config.js`, enter the following within `modules`:
 ```js
 modules: [
   [
-    'nuxt-fire',
+    "nuxt-fire",
     {
       config: {
-        apiKey: '...',
-        authDomain: '...',
-        databaseURL: '...',
-        projectId: '...',
-        storageBucket: '...',
-        messagingSenderId: '...',
-        appId: '...',
-        measurementId: '...' // Might not have this
+        apiKey: "...",
+        authDomain: "...",
+        databaseURL: "...",
+        projectId: "...",
+        storageBucket: "...",
+        messagingSenderId: "...",
+        appId: "...",
+        measurementId: "..." // Might not have this
       },
       services: {
         auth: true,
@@ -82,15 +82,19 @@ modules: [
       }
     }
   ]
-]
+];
 ```
+
+::: warning
+If you are going to use `onSnapshot` with Firestore, you MUST use it in the `mounted` hook. If you don't, you may get an error saying `The command 'nuxt generate' finished but did not exit after 5s`.
+:::
 
 ## Naming
 
 When using Nuxt-Fire, you will not need to import any firebase scripts since it is now a global script. Instead of using the conventional JavaScript naming, use the Nuxt-Fire nameing described below.
 
-| Javascript           | Nuxt-Fire          | Common Alias |
-| -------------------- | ------------------ | ------------ |
-| firebase.auth()      | this.\$fireAuth    | auth         |
-| firebase.firestore() | this.\$fireStore   | db           |
-| firebase.storage()   | this.\$fireStorage | storage      |
+| Javascript           | Nuxt-Fire          | Common Variable Name |
+| -------------------- | ------------------ | -------------------- |
+| firebase.auth()      | this.\$fireAuth    | fireAuth             |
+| firebase.firestore() | this.\$fireStore   | fireDB               |
+| firebase.storage()   | this.\$fireStorage | fireStorage          |
