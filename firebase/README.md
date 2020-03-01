@@ -55,7 +55,7 @@ Before you can do any configuration or write any firebase code, you have to inst
 
 ```bash
 npm i firebase
-npm i nuxt-fire
+npm i @nuxtjs/firebase
 ```
 
 In `nuxt.config.js`, enter the following within `modules`:
@@ -63,7 +63,7 @@ In `nuxt.config.js`, enter the following within `modules`:
 ```js
 modules: [
   [
-    "nuxt-fire",
+    "@nuxtjs/firebase",
     {
       config: {
         apiKey: "...",
@@ -98,3 +98,11 @@ When using Nuxt-Fire, you will not need to import any firebase scripts since it 
 | firebase.auth()      | this.\$fireAuth    | fireAuth             |
 | firebase.firestore() | this.\$fireStore   | fireDB               |
 | firebase.storage()   | this.\$fireStorage | fireStorage          |
+
+Accessing objects is also available. Specifically, I only use this for Authentication when signing in with other services like Google.
+
+| JavaScript         | Nuxt-Fire        |
+| ------------------ | ---------------- |
+| firebase.auth      | \$fireAuthObj    |
+| firebase.firestore | \$fireStoreObj   |
+| firebase.storage   | \$fireStorageObj |
