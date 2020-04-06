@@ -66,3 +66,9 @@ service cloud.firestore {
   }
 }
 ```
+
+## Helpful Explanations
+
+- [Raja Tamil](https://softauthor.com/firestore-security-rules)
+- [Eric Decanini](https://www.ericdecanini.com/2018/02/03/understanding-cloud-firestore-security-rules/)
+- [Jeff Delaney](https://fireship.io/snippets/firestore-rules-recipes/)

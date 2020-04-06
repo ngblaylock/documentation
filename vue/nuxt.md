@@ -82,6 +82,10 @@ npm run generate
 
 This will build all of the files into the docs folder in the project. From here, simply push the GitHub repository to your account.
 
+::: warning
+Using Dynamic links with the generate command will not give you the pages you expect. The only way to navigate to those links is by clicking through the application. You cannot simply copy and paste the URL and share it with someone. It will return a 404 page error. If you need dynamic data that works with the generate command, consider using URL Queries.
+:::
+
 ## Domain Hookup with GitHub Pages
 
 ### GitHub Setup
