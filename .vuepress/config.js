@@ -33,6 +33,7 @@ module.exports = {
         children: [
           "/vue/",
           "/vue/cli",
+          "/vue/meta",
           "/vue/nuxt",
           "/vue/router",
           "/vue/vuex",
@@ -59,6 +60,7 @@ module.exports = {
           "/other/extras",
           "/other/fontawesome",
           "/other/forms",
+          "/other/github",
           "/other/js-snacks",
           "/other/tabletopjs",
           "/other/vscode"

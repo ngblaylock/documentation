@@ -86,29 +86,27 @@ This will build all of the files into the docs folder in the project. From here,
 Using Dynamic links with the generate command will not give you the pages you expect. The only way to navigate to those links is by clicking through the application. You cannot simply copy and paste the URL and share it with someone. It will return a 404 page error. If you need dynamic data that works with the generate command, consider using URL Queries.
 :::
 
+## Page Transitions
+
+Use page transitions to keep things fresh. Simply add this code to the css file. This does not work if you are going to use page queries instead of dynamic links.
+
+``` css
+.page-enter-active, .page-leave-active{
+    transition: all 0.2s ease-in-out;
+}
+
+.page-enter, .page-leave-active{
+    opacity: 0;
+}
+```
+
 ## Domain Hookup with GitHub Pages
 
 ### GitHub Setup
 
 In GitHub, go to the repository settings, make sure that the repository is public, and host the gh-pages from the `Master/docs` folder.
 
-### Subdomain Hookup
-
-The first part is to create a `CNAME` file in the `static` folder in the Nuxt project. When it is in the static folder, it will automatically be pushed to production when it is generated. The domain informaiton should be the only text inside the `CNAME` file as follows:
-
-```
-<subdomain>.nathanblaylock.com
-```
-
-Now go to [domains.google.com](https://domains.google.com) add add the following for a subdomain:
-
-```
-<subdomain> CNAME 1h ngblaylock.github.io.
-```
-
-Make sure to generate your project again, and push the repository to GitHub. You may need to wait a while for everything to make the propper connections, but you should have it ready before you know it.
-
-### Subpage in Domain Setup
+### Host as subpage
 
 When working with subpages on Nuxt, the root folder for the router needs to be changed for page navigation to work correctly. Enter the following in nuxt.config.js:
 
