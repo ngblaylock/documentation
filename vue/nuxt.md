@@ -64,6 +64,62 @@ bootstrapVue: {
 // or: @import "~assets/style/custom-vars";
 ```
 
+## Custom Error Page
+
+The Nuxt documentation is a little misleading. What I was able to get to work for static websites to host on Firebase and GitHub pages is to use 3 different pages for the error page. The first page is in `pages/404.vue`. This page should contain only the following:
+
+``` js
+<script>
+export default {
+  layout: 'errortemplate'
+}
+</script>
+```
+
+That is it. No template, nothing. The next page is to create the `layouts/errortemplate.vue` page, which should have the following:
+
+``` html
+<template>
+  <div>
+      <Nuxt />
+  </div>
+</template>
+```
+
+Feel free to include any styles with this as well. But in itself, this is all you need as a minimum. Then create another page in `layouts/error.vue`. This is where the actual content of the error page lives. The code could look like the following, including any styling you choose to have:
+
+``` js
+<template>
+  <div>
+      <h1>The page could not be found.</h1>
+      <nuxt-link to="/">Back to Homepage</nuxt-link>
+  </div>
+</template>
+
+<script>
+export default {
+  layout: 'errortemplate'
+}
+</script>
+
+<style>
+/*Any style you choose here*/
+</style>
+```
+
+What this essentially does, is if there is a page error it goes to the 404 page and displays nothing. Nuxt then says, huh, nothing is here, then throws in the error content. There is only a split second in between, so you don't really see any errors.
+
+## Develop Through Computer IP
+
+Developing through the computer IP is helpful for developing on mobile. You can add this code to your `nuxt.config.js` file and it will allow you to access your Nuxt development environment through the same address. Make sure that your mobile device is on the same network for this to work. Then go to the exact same address on your mobile device as what appears on your computer you are developing on. [Here](https://medium.com/@jpoechill/access-your-nuxt-js-development-server-on-mobile-a4d67ac88bc6) is a good article on how to do this.
+
+``` js
+server: {     
+    port: 8000, // default: 3000     
+    host: '0.0.0.0', // default: localhost   
+  }, 
+```
+
 ## Generate Nuxt project
 
 By default, the Nuxt project will be output to the `dist` folder. To change the output directory for your nuxt project, go to the `nuxt.config.js` file, add the following line:

@@ -55,3 +55,7 @@ const everyItem = items.every(item => {
     // returns a true or false statement
 })
 ```
+
+## Regular Expressions
+
+Email: `/[\w\.\-]+@(\w+(\.\w+){1,})/g`
