@@ -109,6 +109,20 @@ export default {
 
 What this essentially does, is if there is a page error it goes to the 404 page and displays nothing. Nuxt then says, huh, nothing is here, then throws in the error content. There is only a split second in between, so you don't really see any errors.
 
+## Page Transitions
+
+Use page transitions to keep things fresh. Simply add this code to the css file. This does not work if you are going to use page queries instead of dynamic links.
+
+``` css
+.page-enter-active, .page-leave-active{
+    transition: all 0.2s ease-in-out;
+}
+
+.page-enter, .page-leave-active{
+    opacity: 0;
+}
+```
+
 ## Develop Through Computer IP
 
 Developing through the computer IP is helpful for developing on mobile. You can add this code to your `nuxt.config.js` file and it will allow you to access your Nuxt development environment through the same address. Make sure that your mobile device is on the same network for this to work. Then go to the exact same address on your mobile device as what appears on your computer you are developing on. [Here](https://medium.com/@jpoechill/access-your-nuxt-js-development-server-on-mobile-a4d67ac88bc6) is a good article on how to do this.
@@ -141,20 +155,6 @@ This will build all of the files into the docs folder in the project. From here,
 ::: warning
 Using Dynamic links with the generate command will not give you the pages you expect. The only way to navigate to those links is by clicking through the application. You cannot simply copy and paste the URL and share it with someone. It will return a 404 page error. If you need dynamic data that works with the generate command, consider using URL Queries.
 :::
-
-## Page Transitions
-
-Use page transitions to keep things fresh. Simply add this code to the css file. This does not work if you are going to use page queries instead of dynamic links.
-
-``` css
-.page-enter-active, .page-leave-active{
-    transition: all 0.2s ease-in-out;
-}
-
-.page-enter, .page-leave-active{
-    opacity: 0;
-}
-```
 
 ## Domain Hookup with GitHub Pages
 
