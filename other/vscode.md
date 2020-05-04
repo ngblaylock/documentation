@@ -3,7 +3,8 @@
 ## Extensions
 
 - Auto Rename Tag
-- Auto Prefixer
+- Autoprefixer
+- Highlight Matching Tag
 - Live Sass Compiler
 - Live Server
 - Markdown All in One
