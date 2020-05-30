@@ -61,6 +61,7 @@ module.exports = {
           "/other/fontawesome",
           "/other/forms",
           "/other/github",
+          "/other/css-snacks",
           "/other/js-snacks",
           "/other/tabletopjs",
           "/other/vscode"
