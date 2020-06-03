@@ -61,3 +61,7 @@ Use the following to keep everything organized. The file structure will be the f
     }
 ],
 ```
+
+## Other Preferences
+
+1. Since Prettier uses 2 spaces for their tab size, go to preferences and change the default tab size there.
