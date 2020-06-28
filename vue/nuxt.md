@@ -144,16 +144,19 @@ generate: {
 },
 ```
 
-This will build a page to the docs folder, which GitHub can host from the master component. More on this later. In the terminal, enter the following command:
+In Nuxt 2.13, the `npm run generate` command is moving out in place of `npm run build`, then `npm run export`. These commands are a little long, and can require a little more configuration that comes out of the box. However, the generate command is more powerful and better in the long run. So add one line (below) to the `package.json` file and run `npm run static` for easy static generation.
 
-```bash
-npm run generate
+```json
+// in package.json, under `scripts`
+"static": "nuxt build --target static && nuxt export"
 ```
 
 This will build all of the files into the docs folder in the project. From here, simply push the GitHub repository to your account.
 
 ::: warning
-Using Dynamic links with the generate command will not give you the pages you expect. The only way to navigate to those links is by clicking through the application. You cannot simply copy and paste the URL and share it with someone. It will return a 404 page error. If you need dynamic data that works with the generate command, consider using URL Queries.
+**\<2.13** Using Dynamic links with the generate command will not give you the pages you expect. The only way to navigate to those links is by clicking through the application. You cannot simply copy and paste the URL and share it with someone. It will return a 404 page error. If you need dynamic data that works with the generate command, consider using URL Queries.
+
+**\>2.13** Dynamic pages are generated if there is info avalable for the new crawler to go over. This would work for an API that you get, but it would only travel through during the time of generate. This wouldn't work well for firebase, where you are continually creating, reading, updating, and deleting data. A better use for this to look into would be a SPA fallback.
 :::
 
 ## Domain Hookup with GitHub Pages
