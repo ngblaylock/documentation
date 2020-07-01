@@ -82,3 +82,42 @@ slugify: function(string) {
     .replace(/-+$/, '') // Trim - from end of text
 },
 ```
+
+## Check Browser for Internet Explorer
+
+If you are developing an app that doesn't work or work well with Internet Explorer, you can use this to check for that and do something if it does. This specific script will also detect if using Microsoft Edge, so if you don't need that then you can comment it out. I found this on [Stack Overflow](https://stackoverflow.com/questions/19999388/check-if-user-is-using-ie ).
+
+```js
+<script>
+  function detectIEEdge() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0) {
+      // IE 10 or older => return version number
+      return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+    }
+
+    var trident = ua.indexOf("Trident/");
+    if (trident > 0) {
+      // IE 11 => return version number
+      var rv = ua.indexOf("rv:");
+      return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+    }
+
+    var edge = ua.indexOf("Edge/");
+    if (edge > 0) {
+      // Edge => return version number
+      return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+    }
+
+    // other browser
+    return false;
+  }
+
+  if(detectIEEdge()){
+    // Alert if the browser is IE or Edge
+    alert("Please don't use edge or Internet Explorer")
+  }
+</script>
+```
