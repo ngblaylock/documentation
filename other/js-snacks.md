@@ -58,29 +58,73 @@ const everyItem = items.every((item) => {
 
 ## Regular Expressions
 
-Email: `/[\w\.\-]+@(\w+(\.\w+){1,})/g`
+### Email 
 
-Slugify: from [Matthias Hagemann](https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1)
+``` js
+/[\w\.\-]+@(\w+(\.\w+){1,})/g
+```
+
+### Slugify
+
 
 ```js
+// By Matthias Hagemann, https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1)
 slugify: function(string) {
-    const a =
-    'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
-    const b =
-    'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
-    const p = new RegExp(a.split('').join('|'), 'g')
+  const a =
+  'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+  const b =
+  'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
 
-    return string
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
+  return string
+  .toString()
+  .toLowerCase()
+  .replace(/\s+/g, '-') // Replace spaces with -
+  .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+  .replace(/&/g, '-and-') // Replace & with 'and'
+  .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+  .replace(/\-\-+/g, '-') // Replace multiple - with single -
+  .replace(/^-+/, '') // Trim - from start of text
+  .replace(/-+$/, '') // Trim - from end of text
 },
+```
+
+### Get URL Parameter
+
+``` js
+//  https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+// Returns the parameter for a given URL
+console.log(
+  getParameterByName(
+    "isCool",
+    "https://nathanblaylock.com/?isCool=Super%20Cool"
+  )
+);
+
+// Returns the parameter for the current window
+console.log(getParameterByName("isCool"));
+```
+
+### To Dollar Amount:
+
+``` js
+// https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+function toDollar(value) {
+  return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+}
+
+console.log(toDollar(1234567.896))   // $1,234,567.90
+console.log(toDollar('1234567.896'))   // $1,234,567.90
 ```
 
 ## Check Browser for Internet Explorer
@@ -88,36 +132,34 @@ slugify: function(string) {
 If you are developing an app that doesn't work or work well with Internet Explorer, you can use this to check for that and do something if it does. This specific script will also detect if using Microsoft Edge, so if you don't need that then you can comment it out. I found this on [Stack Overflow](https://stackoverflow.com/questions/19999388/check-if-user-is-using-ie ).
 
 ```js
-<script>
-  function detectIEEdge() {
-    var ua = window.navigator.userAgent;
+function detectIEEdge() {
+  var ua = window.navigator.userAgent;
 
-    var msie = ua.indexOf("MSIE ");
-    if (msie > 0) {
-      // IE 10 or older => return version number
-      return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
-    }
-
-    var trident = ua.indexOf("Trident/");
-    if (trident > 0) {
-      // IE 11 => return version number
-      var rv = ua.indexOf("rv:");
-      return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
-    }
-
-    var edge = ua.indexOf("Edge/");
-    if (edge > 0) {
-      // Edge => return version number
-      return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
-    }
-
-    // other browser
-    return false;
+  var msie = ua.indexOf("MSIE ");
+  if (msie > 0) {
+    // IE 10 or older => return version number
+    return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
   }
 
-  if(detectIEEdge()){
-    // Alert if the browser is IE or Edge
-    alert("Please don't use edge or Internet Explorer")
+  var trident = ua.indexOf("Trident/");
+  if (trident > 0) {
+    // IE 11 => return version number
+    var rv = ua.indexOf("rv:");
+    return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
   }
-</script>
+
+  var edge = ua.indexOf("Edge/");
+  if (edge > 0) {
+    // Edge => return version number
+    return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+  }
+
+  // other browser
+  return false;
+}
+
+if(detectIEEdge()){
+  // Alert if the browser is IE or Edge
+  alert("Please don't use edge or Internet Explorer")
+}
 ```
