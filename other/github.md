@@ -39,3 +39,12 @@ Go to [domains.google.com](https://domains.google.com) and sign in. In the DNS t
 | \<subdomain> | CNAME | 1h  | ngblaylock.github.io. |
 
 Make sure to generate your project again, and push the repository to GitHub. You may need to wait a while for everything to make the propper connections, but you should have it ready before you know it.
+
+## .gitignore
+
+Here a some specific helpful gitignore items that I should include in my little projects.
+
+``` gitignore
+node_modules/
+.DS_Store
+```

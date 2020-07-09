@@ -163,3 +163,37 @@ if(detectIEEdge()){
   alert("Please don't use edge or Internet Explorer")
 }
 ```
+
+## Node Batch Rename Files
+
+This specific script is good for taking a bunch of Word document files named by date, and copying them to a different folder with a easy to use naming convention. For example, `January 5 2020.docx` to `2020-01-05.docx`. Then when sorting the files it will be by the date rather than the name, which wouldn't put them in any specific order. 
+
+This script could really use some touching up, but this was just a quick and dirty way that I put together to do a specific group of files. It would be best to test this out with a few files to make sure you don't get something that you really don't want. 
+
+1. Create a new folder and `cd` into it.
+2. Do a `npm init -y` to start a new node project with the defaults. 
+3. Install Moment.js with `npm i moment`
+4. Create a new folder in the root directory called `converted`
+5. In the root directory, move all the files you want to convert. Double check that they are in some readable date-like format that Moment.js can understand.
+6. Create a file called `index.js` and put in the following:
+
+``` js
+const moment = require("moment");
+const fs = require("fs");
+const path = require("path");
+
+const files = fs.readdirSync(__dirname);
+
+for (const file of files) {
+  if (file.endsWith(".docx")) {
+    const fileName = path.basename(file, ".docx");
+    const newName = moment(fileName).format("YYYY-MM-DD");
+    console.log(newName);
+
+    fs.copyFile(file, `converted/${newName}.docx`, (err) => {
+      if (err) throw err;
+      console.log(`${fileName} Has been converted to ${newName}`);
+    });
+  }
+}
+```
