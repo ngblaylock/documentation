@@ -19,10 +19,6 @@ module.exports = {
         link: "/firebase/"
       },
       {
-        text: "Other",
-        link: "/other/"
-      },
-      {
         text: "Portfolio",
         link: "https://www.nathanblaylock.com"
       }
@@ -52,19 +48,22 @@ module.exports = {
         ]
       },
       {
+        title: "Toolkit",
+        children: [
+          "/toolkit/css-snacks",
+          "/toolkit/fontawesome",
+          "/toolkit/forms",
+          "/toolkit/github",
+          "/toolkit/js-snacks",
+          "/toolkit/tabletopjs",
+          "/toolkit/vscode"
+        ]
+      },
+      {
         title: "Other",
         children: [
-          "/other/",
-          "/other/bootstrap4",
           "/other/desktopapps",
           "/other/extras",
-          "/other/fontawesome",
-          "/other/forms",
-          "/other/github",
-          "/other/css-snacks",
-          "/other/js-snacks",
-          "/other/tabletopjs",
-          "/other/vscode"
         ]
       }
     ]

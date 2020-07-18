@@ -28,43 +28,31 @@
 ## Applications
 
 - AdobeCreative Cloud
-  - Acrobat
-  - Illustrator
-  - Indesign
-  - Photoshop
-  - Premiere
   - XD
+- Affinity Suite
+  - Photo
+  - Designer
+  - Publisher
 - Amphetamine
 - App Cleaner
-- Asana
 - Backup and Sync
 - Bitwarden
-- Box Drive
+- Chrome
 - Firefox
 - Flycut
 - GitHub Desktop
-- Chrome
 - Handbrake
-- IconJar (Registered to jason.barnett@usu.edu)
 - Install Disk Creator
 - Kindle
-- Microsoft Office
-  - Excel
-  - OneNote
-  - Outlook
-  - PowerPoint
-  - Word
 - Node & NPM
 - Opera
 - SiteSucker
-- Sketch
 - Slack
 - Trello
-- VS Code
 - VLC
+- VS Code
 - Zoom
 
 ## Fonts
 
-- USU Fonts
-- CEHS Fonts
+- Roboto

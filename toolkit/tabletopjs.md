@@ -1,5 +1,9 @@
 # Tabletop.js
 
+::: tip
+  FYI, there is a better version of this. I don't know how stable it is, but it should do simple jobs for free: [GSX2JSON](https://github.com/55sketch/gsx2json), or for a paid version which might be more stable: [SheetDB](https://sheetdb.io)
+:::
+
 Below is an example of pulling in content from a Google Spreadsheet. This uses a JavaScript Library called Tabletop.js, which pulls content from the spreadsheet and aranges it into a JavaScript Object. The following are steps to setting up the google spreadsheet:
 
 1. Create a Google Spreadsheet under any account.
