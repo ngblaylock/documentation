@@ -18,6 +18,45 @@ produces:
 
 <p style="color: blue;">This is a paragraph with a <span style='color: green;'>span</span> tag.</p>
 
+## Tips, Warnings, Danger Helper Boxes
+
+::: tip
+This is a tip box
+:::
+
+::: warning
+This is a warning box
+:::
+
+::: danger
+This is a danger box
+:::
+
+``` md
+::: tip
+This is a tip box
+:::
+
+::: warning
+This is a warning box
+:::
+
+::: danger
+This is a danger box
+:::
+```
+
+You can also name the boxes for what you specifically want it to say
+
+::: tip NOTE
+This says `NOTE`, instead of `TIP`
+:::
+
+``` md
+::: tip NOTE
+This says `NOTE`, instead of `TIP`
+:::
+```
 
 ## Run in Development Mode
 
@@ -39,7 +78,7 @@ Add the following to the `.vuepress/config.js` file.
 dest: 'docs',
 ```
 
-The default is dest: `dest: '.vuepress/dist'`.
+The default is `dest: '.vuepress/dist'`.
 
 ## Folder Permissions
 
