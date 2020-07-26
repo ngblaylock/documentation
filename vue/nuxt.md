@@ -136,11 +136,12 @@ server: {
 
 ## Generate Nuxt project
 
-By default, the Nuxt project will be output to the `dist` folder. To change the output directory for your nuxt project, go to the `nuxt.config.js` file, add the following line:
+By default, the Nuxt project will be output to the `dist` folder. To change the output directory for your nuxt project, go to the `nuxt.config.js` file, add the following lines. Fallback is also required for error pages to work correctly.
 
 ```js
 generate: {
-    dir: "docs"
+    dir: "docs",
+    fallback: true
 },
 ```
 
