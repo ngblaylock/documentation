@@ -14,7 +14,7 @@ sudo npm install -g firebase-tools
 firebase login
 ```
 
-This will open up a webpage where you select your account and log in. Select `Allow` to give Firebase the propper permissions. Once authenticated, you can go back to the code editor.
+This will open up a webpage where you select your account and log in. Select `Allow` to give Firebase the propper permissions. Once authenticated, you can go back to the code editor. You may only need to do this once per computer.
 
 ## Initiate your Project
 
@@ -26,20 +26,25 @@ firebase init
 
 This CLI will ask multiple questions. Follow the instructions there depending on what end result you are hoping for.
 
-## Run in Development Mode
 
-This is necessary to run instead of the Live Server plugin because this will use the directory selected in your project as the root. Live server will use the workspace folder as the root, and mess up some links.
+## Deploy
+
+If you want to double check the functionality of the project before deploying, run the following command.
 
 ```
 firebase serve
 ```
 
-## Deploy
-
-This is super easy. Just run the following command and away you go. The command line will give you a link
+When you are ready to push the site live, run:
 
 ```
 firebase deploy
+```
+
+or to leave a message for the deploy (viewd in the console under versions), run:
+
+```
+firebase deploy -m "Deploying the best new feature ever."
 ```
 
 ## Connect Domain
@@ -51,11 +56,20 @@ If you want to deploy from soemthing other than `*.firebaseapp.com` or `*.web.ap
    1. Go to the Domain DNS page, and enter the resource record types provided
 3. Go live. This might take up to a day, but typically takes 20 minutes, more or less.
 
+The DNS page might look something like this:
+
+| Name | Type | TTL | Data                               |
+| ---- | ---- | --- | ---------------------------------- |
+| @    | A    | 1h  | 151.101.1.195 <br />151.101.65.195 |
+| foo  | A    | 1h  | 151.101.1.195 <br />151.101.65.195 |
+
+In this example, the `@` would be `bar.com`, and `foo` would be `foo.bar.com`.
+
 ## Redirects
 
 `"type": 302` is a temporary redirect, where `"type": 301` is a permenant redirect. Probably default to `302`, but it may have some SEO issues.
 
-``` js
+```js
 "redirects": [
     {
         "source": "/about",

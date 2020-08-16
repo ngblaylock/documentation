@@ -50,12 +50,12 @@ module.exports = {
       {
         title: "Toolkit",
         children: [
-          "/toolkit/css-snacks",
+          "/toolkit/bootstrap",
+          "/toolkit/databases",
           "/toolkit/fontawesome",
           "/toolkit/forms",
           "/toolkit/github",
           "/toolkit/js-snacks",
-          "/toolkit/tabletopjs",
           "/toolkit/vscode"
         ]
       },

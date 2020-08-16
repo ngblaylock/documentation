@@ -20,31 +20,21 @@ or
 
 ## Domain Setup
 
-Go to [domains.google.com](https://domains.google.com) add sign in. In the DNS tab, go to the Custom Resource Records section. Add two new sections:
+Go to [domains.google.com](https://domains.google.com) add sign in. In the DNS tab, go to the Custom Resource Records section.
 
-| Name | Type  | TTL | Data                  |
-| ---- | ----- | --- | --------------------- |
-| @    | A     | 1h  | 185.199.108.153       |
-|      |       |     | 185.199.109.153       |
-|      |       |     | 185.199.110.153       |
-|      |       |     | 185.199.111.153       |
-| www  | CNAME | 1h  | ngblaylock.github.io. |
+| Name | Type  | TTL | Data                                                                           |
+| ---- | ----- | --- | ------------------------------------------------------------------------------ |
+| @    | A     | 1h  | 185.199.108.153<br />185.199.109.153<br />185.199.110.153<br />185.199.111.153 |
+| www  | CNAME | 1h  | user.github.io.                                                                |
+| foo  | CNAME | 1h  | user.github.io.                                                                |
 
-## Subdomain Hookup
-
-Go to [domains.google.com](https://domains.google.com) and sign in. In the DNS tab, go to the Custom Resoruce Records section. Add the following for a subdomain:
-
-| Name         | Type  | TTL | Data                  |
-| ------------ | ----- | --- | --------------------- |
-| \<subdomain> | CNAME | 1h  | ngblaylock.github.io. |
-
-Make sure to generate your project again, and push the repository to GitHub. You may need to wait a while for everything to make the propper connections, but you should have it ready before you know it.
+In this example, the `@` would be for `bar.com`, the `www` would be for `www.bar.com`, and `foo` would be for `foo.bar.com`.
 
 ## .gitignore
 
 Here a some specific helpful gitignore items that I should include in my little projects.
 
-``` gitignore
+```gitignore
 node_modules/
 .DS_Store
 ```
