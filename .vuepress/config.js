@@ -64,6 +64,7 @@ module.exports = {
         children: [
           "/other/desktopapps",
           "/other/extras",
+          "/other/linux",
         ]
       }
     ]
