@@ -1,0 +1,16 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "description": "Nathan's documentation",
+  "main": "index.js",
+  "repository": "https://github.com/ngblaylock/documentation.git",
+  "author": "Nathan Blaylock <ngblaylock@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.4"
+  },
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  }
+}

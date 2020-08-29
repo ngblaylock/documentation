@@ -48,6 +48,13 @@ module.exports = {
         ]
       },
       {
+        title: "11ty",
+        children: [
+          "/11ty/",
+          "/11ty/config",
+        ]
+      },
+      {
         title: "Toolkit",
         children: [
           "/toolkit/bootstrap",

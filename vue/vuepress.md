@@ -2,10 +2,19 @@
 
 ## Install Vuepress
 
-You only need to do this once per computer.
+A few things have changed since I set up my first Vuepress page, so take a look at the [quickstart](https://vuepress.vuejs.org/guide/getting-started.html#getting-started) which should be much easier to go off of.
 
-```
-sudo npm install -g vuepress
+One big change is that I had originally set up my site to use vuepress globally, but this way you use your local directory for vuepress using `node_modules`. This is better since you don't need to use `sudo` when running commands.
+
+You may need to add your own scripts to the package.json file. Here are what mine look like: 
+
+``` json
+{
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  }
+}
 ```
 
 ## Using HTML in Vuepress
@@ -58,16 +67,20 @@ This says `NOTE`, instead of `TIP`
 :::
 ```
 
+## Custom Styles
+
+Styles in Vuepress are done with Stylus. I know, right? Anyway, the best way to go about this is do have two folders. One in `.vuepress/styles/index.styl`, and the other in `.vuepress/styles/palette.styl`. The first one is where you can add global styles that you want to change. For example, I changed the style of the `Tip` to be a blue instead of a green. The palette file is where you can change your color variables to be whatever you want. You can find more information on [Vuepress' website](https://vuepress.vuejs.org/config/#styling).
+
 ## Run in Development Mode
 
 ```
-sudo vuepress dev
+npm run dev
 ```
 
 ## Build for Production
 
 ```
-sudo vuepress build
+npm run build
 ```
 
 ## Build to the docs folder for easy GitHub Deployment
@@ -79,10 +92,6 @@ dest: 'docs',
 ```
 
 The default is `dest: '.vuepress/dist'`.
-
-## Folder Permissions
-
-So, aparently, the default behavior of the `docs` folder produced in the build only gives you read access. Normally, this would be fine, but if you are working on it with multiple computers, pushing and pulling from GitHub will throw an error saying that there are not sufficient permissions. To fix this, you need to right click the `docs` folder and select `Get Info`. Then add your username (on the computer) and set your permissions to `Read-Write`.
 
 ## Last Updated
 

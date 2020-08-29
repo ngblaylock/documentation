@@ -11,6 +11,7 @@
 - Markdown All in One
 - Material Icon Theme
 - Material Theme
+- Nunjucks Template
 - Prettier
 - Vetur
 - Vue Peek
@@ -34,7 +35,8 @@
   ],
   "editor.tabSize": 2,
   "workbench.iconTheme": "material-icon-theme",
-  "editor.wordWrap": "wordWrapColumn"
+  "editor.wordWrap": "wordWrapColumn",
+  "emmet.includeLanguages": { "njk": "html" }
 }
 ```
 
