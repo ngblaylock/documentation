@@ -83,6 +83,10 @@ npm run dev
 npm run build
 ```
 
+::: warning
+On Linux, I found that I needed to use `sudo npm run build`
+:::
+
 ## Build to the docs folder for easy GitHub Deployment
 
 Add the following to the `.vuepress/config.js` file.
