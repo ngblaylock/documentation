@@ -22,6 +22,6 @@ When you have the flash drive and the partition, next thing to do is to set up L
 
 There are a few things that I did to customize Linux. First, with Gnome Tweaks, download a few icons and themes. Here are the ones I did: 
 
-- Application: McOS-CTLina-Gnome-1.3.2
+- Application: Adwaita
 - Cursor: WhiteSur-cursors
 - Icons: WhiteSur

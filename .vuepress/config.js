@@ -30,10 +30,8 @@ module.exports = {
           "/vue/",
           "/vue/cli",
           "/vue/meta",
-          "/vue/nuxt",
           "/vue/router",
           "/vue/vuex",
-          "/vue/vuepress"
         ]
       },
       {
@@ -48,10 +46,11 @@ module.exports = {
         ]
       },
       {
-        title: "11ty",
+        title: "Static Site Generators",
         children: [
-          "/11ty/",
-          "/11ty/config",
+          "/ssg/eleventy",
+          "/ssg/nuxt",
+          "/ssg/vuepress",
         ]
       },
       {
