@@ -61,13 +61,14 @@ The DNS page might look something like this:
 | Name | Type | TTL | Data                               |
 | ---- | ---- | --- | ---------------------------------- |
 | @    | A    | 1h  | 151.101.1.195 <br />151.101.65.195 |
+| www  | A    | 1h  | 151.101.1.195 <br />151.101.65.195 |
 | foo  | A    | 1h  | 151.101.1.195 <br />151.101.65.195 |
 
-In this example, the `@` would be `bar.com`, and `foo` would be `foo.bar.com`.
+In this example, the `@` would be `bar.com`, `www` would be `www.bar.com`, and `foo` would be `foo.bar.com`.
 
 ## Redirects
 
-`"type": 302` is a temporary redirect, where `"type": 301` is a permenant redirect. Probably default to `302`, but it may have some SEO issues.
+`"type": 302` is a temporary redirect, where `"type": 301` is a permenant redirect. If you use a 301 redirect for a temporaty purpose, you may end up with seo issues.
 
 ```js
 "redirects": [
