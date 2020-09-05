@@ -47,6 +47,87 @@ or to leave a message for the deploy (viewd in the console under versions), run:
 firebase deploy -m "Deploying the best new feature ever."
 ```
 
+## Set Up Staging and Production Sites
+
+In the firebase console in your browser, head to the hosting section. Add a new site to your project. If you are just creating a site without a database, you don't need to create a new project. When you create the site, be sure to call it something like `project-name-stage`. You should then have two sites, one with the name of the project, and another staging site. 
+
+::: warning
+If you have already initialized hosting for the website without the staging site, you first need to go back and delete the `.firebase` directory, as well as `firebase.json` and `.firebaserc` files. There was something cached there that caused issues.
+:::
+
+### Configuring Staging and Production
+
+Initialize your project again, then head over to the [firebase documentation](https://firebase.google.com/docs/hosting/multisites?authuser=0) and follow the instructions for setting up deploy targets for both sites.
+
+The Firebase CLI commands for setting up your deploy targets should look like the following:
+
+``` bash
+firebase target:apply hosting prod project-name
+firebase target:apply hosting stage project-name-stage
+```
+
+Your `.firebaserc` file should look like the following:
+
+``` 
+{
+  "projects": {
+    "default": "project-name"
+  },
+  "targets": {
+    "project-name": {
+      "hosting": {
+        "prod": [
+          "project-name"
+        ],
+        "stage": [
+          "project-name-stage"
+        ]
+      }
+    }
+  }
+}
+```
+
+And your `firebase.json` file should look like the following:
+
+``` json
+{
+  "hosting": [
+    {
+      "target": "prod",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "stage",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}
+```
+### Deploying Staging and Production
+
+There are three scripts that you will need to know.
+
+1. `firebase deploy` - This will deploy both the staging and development environments
+2. `firebase deploy --only hosting:prod` - Deploy just to the production site
+3. `firebase deploy --only hosting:stage` - Deploy just to the staging site
+   - Append `-m "Deploy Message` for leaving a message 
+
+::: tip
+Add a npm script for each.<br />
+Ex. `"stage": "firebase deploy --only hosting:stage"` and run `npm run stage` or `npm run stage -- -m "Deploy Message"`.
+:::
+
 ## Connect Domain
 
 If you want to deploy from soemthing other than `*.firebaseapp.com` or `*.web.app` you can connect to a specific domain. In the Hosting console in Firebase, click the button that says `Connect domain`.
