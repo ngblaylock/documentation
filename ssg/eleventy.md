@@ -136,3 +136,16 @@ Now you will not need to add the layout to each page's frontmatter data. If for 
 Eleventy has quite a few options for languages that you can choose from. My preference is to use Liquid and Markdown. The reason why I choose Liquid over Nunjucks is because the [Liquid documentation](https://shopify.github.io/liquid/) is easier to follow, and [Liquid is significantly faster than Nunjucks](https://github.com/11ty/eleventy-benchmark). 
 
 Markdown isn't as fast to compile, but it is sure easier to write. Markdown is best when writing a blog, or some other similar page.
+
+## Vue with Eleventy
+
+::: v-pre
+It took me a while to figure out that the issue I was having with using Vue with Eleventy is that there was some syntax collisions with Liquid and Vue. Both use 
+`{{ double curly brackets }}` syntax, so using Vue in a standard Liquid template will try to convert the liquid before Vue. Super big thanks to [Raymond Camden's Article](https://www.raymondcamden.com/2020/04/03/quick-tip-on-using-vue-with-eleventy) for helping me find a solution. Simply wrap the entire vue section with a raw statement, and it will not convert the liquid syntax, so on the output directory, it will then allow Vue to run as expected.
+::: 
+
+``` js
+{% raw %}
+// vue code
+{% endraw %}
+```
