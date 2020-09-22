@@ -30,7 +30,7 @@ npm run build
 
 ## UI
 
-run the following to execute the UI kit.
+Run the following to use a GUI to manage Vue.
 
 ```
 vue ui

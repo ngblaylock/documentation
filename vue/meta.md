@@ -8,8 +8,11 @@ This is for global meta data information. These will trickle down to the pages i
 
 ``` js
 head: {
-    title: "Title 1 | ",
-    titleTemplate: '%s Website', // Produces 'Title 1 | Website'
+    title: "Title 1",
+    titleTemplate: (titleChunk) => {
+      // If undefined or blank then we don't need the separator
+      return titleChunk ? `${titleChunk} | Site Title` : 'Site Title';
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -38,7 +41,7 @@ Use this on each page. The `hid` is to make sure that the content is not duplica
 ```js
 head () {
     return {
-        title: this.title,
+        title: 'Page Title',
         meta: [
             // hid is used as unique identifier. Do not use `vmid` for it as it will not work
             { hid: 'description', name: 'description', content: 'My custom description' }
@@ -54,7 +57,7 @@ This code will show only the title template until the object is populated.
 ``` js
 head() {
     return {
-        title: this.object.title ? this.object.title + ' | ' : ''
+        title: this.object.title ? this.object.title : ''
     }
 },
 ```
