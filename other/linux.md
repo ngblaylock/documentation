@@ -1,6 +1,6 @@
 # Linux Ubuntu
 
-Repurpose an old computer that is slow with Linux. Adding Linux isn't super easy to do, but there are a ton of good YouTube tutorials for it
+Repurpose an old computer that is slow with Linux. Adding Linux isn't super easy to do, but there are a ton of good YouTube tutorials for it.
 
 ## Step 1 - Create a Bootable USB
 
