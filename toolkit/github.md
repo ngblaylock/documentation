@@ -38,3 +38,13 @@ Here a some specific helpful gitignore items that I should include in my little 
 node_modules
 .DS_Store
 ```
+
+## Clone Private Repo
+
+It would be nice to know how SSH keys work, because then that would probably be easier, but until then, I found this hack online on how to clone a private repo using HTTPS:
+
+``` bash
+git clone https://username:mygithubpassword@github.com/username/repository.git
+```
+
+In this example, `username` will be your github username, `mygithubpassword` is your github password, and `repository` is the repository that you are cloning. If you are using GitHub Desktop, then you don't have to worry about this, but on Linux, you can't use GitHub Desktop, so this is the workaround. Another way of doing it is to just make your repository public, clone it, then reset it to private, but that is kinda dumb.
