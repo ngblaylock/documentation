@@ -57,6 +57,7 @@ module.exports = {
         title: "Toolkit",
         children: [
           "/toolkit/bootstrap",
+          "/toolkit/css-snacks",
           "/toolkit/databases",
           "/toolkit/fontawesome",
           "/toolkit/forms",

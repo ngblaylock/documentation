@@ -1,20 +1,26 @@
 # Visual Studio Code
 
-## Extensions
+## VS Code Extensions
 
-- Alphabetical Sorter
-- Auto Rename Tag
-- Autoprefixer
-- Highlight Matching Tag
-- Live Sass Compiler
-- Live Server
-- Markdown All in One
-- Material Icon Theme
-- Material Theme
-- Nunjucks Template
-- Prettier
-- Vetur
-- Vue Peek
+| Name                   | Author              |
+| ---------------------- | ------------------- |
+| Alphabetical Sorter    | Ugur Erdal          |
+| Auto Rename Tag        | Jun Han             |
+| Autoprefixer           | mrminc              |
+| Git History            | Don Jayamanne       |
+| Highlight Matching Tag | vincaslt            |
+| html-entities          | christopherstyles   |
+| Liquid                 | Νίκος               |
+| Live Sass Compiler     | Ritwick Dey         |
+| Live Server            | Ritwick Dey         |
+| Markdown All in One    | Yu Zhang            |
+| Material Icon Theme    | Philipp Kief        |
+| Material Theme         | Mattia Astorino     |
+| Prettier               | Prettier            |
+| Project Manager        | Alessandro Fragnani |
+| Vetur                  | Pine Wu             |
+| vscode-pdf             | tomoki1207          |
+| XML Tools              | Josh Johnson        |
 
 ## Settings
 
@@ -36,7 +42,7 @@
   "editor.tabSize": 2,
   "workbench.iconTheme": "material-icon-theme",
   "editor.wordWrap": "wordWrapColumn",
-  "emmet.includeLanguages": { "njk": "html" }
+  "emmet.includeLanguages": { "liquid": "html" }
 }
 ```
 
