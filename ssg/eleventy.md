@@ -24,7 +24,7 @@ By default, the script to run eleventy is pretty long and hard to type. Since I 
   },
 }
 ```
-Now, when you run `npm run serve` it will not only compile your website, but it will build it as well. It is pretty cool once you have everything set up.
+Now, when you run `npm run serve` it will not only compile your website, but it will build it as well. It is pretty cool once you have everything set up. 
 
 ::: warning
 If you move around files or directories in your project, Eleventy will not automatically delete the moved folder. One way I have found to fix this is by just deleting the output folder (probably `_site` or `docs`) and then re-running the serve command.
