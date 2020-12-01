@@ -27,33 +27,54 @@ By default, the script to run eleventy is pretty long and hard to type. Since I 
 Now, when you run `npm run serve` it will not only compile your website, but it will build it as well. It is pretty cool once you have everything set up. 
 
 ::: warning
-If you move around files or directories in your project, Eleventy will not automatically delete the moved folder. One way I have found to fix this is by just deleting the output folder (probably `_site` or `docs`) and then re-running the serve command.
+If you move around files or directories in your project, Eleventy will not automatically delete the moved folder. One way I have found to fix this is by just deleting the output folder (probably `_site`, `dist`, or `docs`) and then re-running the serve command.
 :::
 
 ## Config
 
-Here is a pretty basic configuration file that I like to use. Basically, it outputs the build in the docs folder (for GitHub Pages) and it will include the build from the styles, images, and js directories that you need to include. Also, if you have a CNAME, which you probably will have, it will include that as well. 
+Here is a pretty basic configuration file that I like to use. Basically, it outputs the build in the dist folder and it will include the build from the styles, images, and scripts directories that you need to include. Also, if you have a CNAME, which you probably will have, it will include that as well. 
+
+::: warning
+This example assumes that you are using Sass.
+:::
 
 
 ``` js
 // .eleventy.js (in the project root)
 
+const pluginSass = require("eleventy-plugin-sass");
+
 module.exports = eleventyConfig => {
   // Copy our static assets to the output folder
-  eleventyConfig.addPassthroughCopy('styles');
-  eleventyConfig.addPassthroughCopy('js');
-  eleventyConfig.addPassthroughCopy('images');
-  eleventyConfig.addPassthroughCopy('CNAME');
+  // eleventyConfig.addPassthroughCopy('./pages/css');
+  eleventyConfig.addPassthroughCopy('./pages/js');
+  eleventyConfig.addPassthroughCopy('./pages/img');
+  eleventyConfig.addPassthroughCopy('./pages/CNAME');
 
-  // Returning something from the configuration function is optional
-  // Change the directory output to docs to host on GitHub Pages
+  eleventyConfig.addPlugin(pluginSass, {});
+
   return {
     dir: {
-      output: 'docs'
+      input: 'pages',
+      output: 'dist'
     }
   };
 };
 ```
+
+## File Structure
+
+All of the development folders, including the `_includes` folder should be placed inside of `pages`. This will include the scripts, styles, images, or other files as needed. The output will be sent to the `dist` directory, or whatever you end up setting it as.
+
+If you are using Sass, then keep that file outside of the `pages` directory. Probably best to name it `style` with the Sass files directly inside. When you use the plugin, it will keep the directory name.
+
+## Sass
+
+Instead of using the Live Sass Compiler, use the [Sass plugin](https://www.npmjs.com/package/eleventy-plugin-sass). It isn't as powerful, but it does better with hot reloading. 
+
+To install the dependency, run `npm install eleventy-plugin-sass --save`.
+
+The output will be a single css file (unminified) and will be placed at the root of the output folder. 
 
 ## Layouts
 
@@ -65,7 +86,7 @@ Layouts are where Eleventy's power comes from. Unlike Nuxt, Eleventy is not opin
 
 ### Example Bootstrap Starter
 
-Create a new file called `/_includes/default.liquid`.
+Create a new file called `default.liquid` in the `pages/_includes/` directory.
 
 ``` html
 <!DOCTYPE html>
