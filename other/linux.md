@@ -33,6 +33,8 @@ When I ran into problems with the Wifi on my Ubuntu, I decided to try something 
 
 ## Issues and Fixes
 
-*Issue* I had a hard time installing git
+**Issue** I had a hard time installing git <br />
+**Fix** I followed this [article](https://stackoverflow.com/questions/30932121/git-installation-error-missing-installation-candidate/51819385#51819385)
 
-*Fix* I followed this article: https://stackoverflow.com/questions/30932121/git-installation-error-missing-installation-candidate/51819385#51819385
+**Issue** My Wifi suddenly stopped working <br />
+**Fix** It only kinda worked when I was on a bootable drive testing out Zorin OS, but you need to re-install the Wifi card. `sudo apt-get install --reinstall bcmwl-kernel-source`.
