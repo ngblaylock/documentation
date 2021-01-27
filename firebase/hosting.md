@@ -8,6 +8,10 @@ Make sure that you have the firebase command line tools installed.
 sudo npm install -g firebase-tools
 ```
 
+::: warning
+If you are on a Linux, you need to be using NVM, not Node from the Software store. If you are using NVM, you do not need to include `sudo` in your command.
+:::
+
 ## Log in to Firebase.
 
 ```
