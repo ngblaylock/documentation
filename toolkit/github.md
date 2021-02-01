@@ -41,10 +41,10 @@ node_modules
 
 ## Clone Private Repo
 
-It would be nice to know how SSH keys work, because then that would probably be easier, but until then, I found this hack online on how to clone a private repo using HTTPS:
+Cloning a Private Repo is pretty easy if you are using the GitHub CLI tools. Make sure that you have downloaded [GitHub CLI](https://cli.github.com/) from the website. When you first try to run a command, it will ask you to log in to your account. Do that. Then, under the "Download Code" dropdown in the repository you want to select the "GitHub CLI" option.
 
-``` bash
-git clone https://username:mygithubpassword@github.com/username/repository.git
-```
+The old way I did this was by doing some weird clone where you put your username and password in the command. Supposedly, this option is going away in August 2021. This option works better. 
 
-In this example, `username` will be your github username, `mygithubpassword` is your github password, and `repository` is the repository that you are cloning. If you are using GitHub Desktop, then you don't have to worry about this, but on Linux, you can't use GitHub Desktop, so this is the workaround. Another way of doing it is to just make your repository public, clone it, then reset it to private, but that is kinda dumb.
+::: tip NOTE
+If you use GitHub Desktop, you can clone private repos in the app, so you don't need to do this.
+:::
