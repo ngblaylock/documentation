@@ -2,49 +2,44 @@
 
 ## Google Forms
 
-You can use Google Forms on your static web pages. 
+Using Google Forms in your static site has some advantages and disadvantages. Advantages include the ease of setup and control, integrate responses with a Google spreadsheet, and you can easily create email notifications with a [plugin](https://workspace.google.com/u/0/marketplace/app/email_notifications_for_google_forms/984866591130?hl=en&pann=forms_addon_widget). The biggest disadvantage is the style of the embed rarely will match your site. 
 
+I stubled upon a really neat article by [WebJeda](https://blog.webjeda.com/google-form-customize/) who goes over how to customize a form, and really, it is super simple. The example is a little old since the input names that you need will be in a different spot, but by looking over the code a bit better, you will eventually find the right name you need. In my form, the inputs had a name similar to `name="entry.450328905"`. Make sure that the form action is set to the right URL as well. If you want to set up your own custom confirmation page, follow the steps for the iFrame. As a heads up, the user will get a error in the console, but it doesn't stop the form from submitting.
+
+## Honeypot Spam Prevention
+
+Using this Google Form method, you will most likely get a lot of spam bots injecting unwanted information. You can use the honeypot method to trick the spam bots to fill out information, where if filled, the form will not submit. In short, create an dummy field that only spam bots can see. If it is filled out, then do not submit the form.
+
+```html
+<div class="honey-hide">
+  <label for="honey">Do not fill this out</label>
+  <input id="honey" tabindex="-1" />
+</div>
 ```
-TODO: Add in how Google Forms work on a static page
-```
 
-### Honeypot Spam Prevention
-
-::: warning
-This didn't really work. I ended up just putting in the math equation for everyone. It also had some tabbing issues.
-:::
-
-Using this Google Form method, you will most likely get a lot of spam bots injecting unwanted information. You can use the honeypot method to trick the spam bots to fill out information, where if filled, the form will not submit correctly. In short, create an dummy field that only spam bots can see. If it is filled out, then change the form action link. As a backup solution, you can add a simple math problem. To hide the fields from users, use the following CSS:
-
-``` css
-.honeyHide {
-  opacity: 0;
+```css
+.honey-hide {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 0;
-  width: 0;
-  z-index: -1;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  top: -1000px;
+  left: -1000px;
 }
 ```
 
-If you are using Vue or Nuxt, then you should use a watcher:
-
-``` js
-watch: {
-    // whenever the honeypot question is filled, run spamLock, which changes the
-    // form submit link to some bogus link, then forces the math question to show up.
-    spamLock: function() {
-      this.formActionLink = "https://docs.google.com/forms/spamPrevent";
-      this.solveRequired = true;
-    },
-    // whenever the honeypot is triggered and the simple math problem must be solved
-    // then run the following function. If it is correct, then change the form
-    // submit link to the original, and correct link.
-    solveAnswer: function() {
-      if (this.solveAnswer == 3) {
-        this.formActionLink = "https://docs.google.com/forms/...";
-      }
-    }
+```js
+// jQuery
+$("form").submit(function() {
+  if ($("input#honey").val().length != 0) {
+    return false;
   }
+});
 ```
+
+Credit for the script goes to [Thryv](https://www.thryv.com/blog/honeypot-technique/).
+
+## Other Form Services
+
+- [Formspree](https://formspree.io/)
+- [JotForm](https://www.jotform.com/)
