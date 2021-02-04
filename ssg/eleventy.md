@@ -76,6 +76,10 @@ To install the dependency, run `npm install eleventy-plugin-sass --save`.
 
 The output will be a single css file (unminified) and will be placed at the root of the output folder. 
 
+::: warning
+If you use NVM, you may have an issue with node-sass. Run `npm rebuild node-sass` and wait a few minutes, then it should work.
+:::
+
 ## Layouts
 
 Layouts are where Eleventy's power comes from. Unlike Nuxt, Eleventy is not opinionated about the JavaScript framework that you choose. You can use jQuery with Bootstrap 4 without needing to worry about colliding with Vue. 
