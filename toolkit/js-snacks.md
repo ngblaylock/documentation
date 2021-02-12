@@ -89,6 +89,88 @@ slugify: function(string) {
 },
 ```
 
+### Vanilla JS Slide
+
+Vanilla JS and CSS don't handle expanding up and down when there is an auto height. I found this script online that works really well as a replacement to jQuery's `slideIn()`, `slideOut()`, `slideToggle()` functions. This example is set up for a node environment. 
+
+``` js
+// slide.js
+// Specify Element to transition and Duration (milliseconds)
+// slide.up(document.getElementById("target"), 1000);
+// slide.down(document.getElementById("target"), 1000);
+// slide.toggle(document.getElementById("target"), 1000);
+
+/* SLIDE UP */
+let up = (target, duration=200) => {
+
+  target.style.transitionProperty = 'height, margin, padding';
+  target.style.transitionDuration = duration + 'ms';
+  target.style.boxSizing = 'border-box';
+  target.style.height = target.offsetHeight + 'px';
+  target.offsetHeight;
+  target.style.overflow = 'hidden';
+  target.style.height = 0;
+  target.style.paddingTop = 0;
+  target.style.paddingBottom = 0;
+  target.style.marginTop = 0;
+  target.style.marginBottom = 0;
+  window.setTimeout( () => {
+        target.style.display = 'none';
+        target.style.removeProperty('height');
+        target.style.removeProperty('padding-top');
+        target.style.removeProperty('padding-bottom');
+        target.style.removeProperty('margin-top');
+        target.style.removeProperty('margin-bottom');
+        target.style.removeProperty('overflow');
+        target.style.removeProperty('transition-duration');
+        target.style.removeProperty('transition-property');
+        //alert("!");
+  }, duration);
+}
+
+/* SLIDE DOWN */
+let down = (target, duration=200) => {
+
+  target.style.removeProperty('display');
+  let display = window.getComputedStyle(target).display;
+  if (display === 'none') display = 'block';
+  target.style.display = display;
+  let height = target.offsetHeight;
+  target.style.overflow = 'hidden';
+  target.style.height = 0;
+  target.style.paddingTop = 0;
+  target.style.paddingBottom = 0;
+  target.style.marginTop = 0;
+  target.style.marginBottom = 0;
+  target.offsetHeight;
+  target.style.boxSizing = 'border-box';
+  target.style.transitionProperty = "height, margin, padding";
+  target.style.transitionDuration = duration + 'ms';
+  target.style.height = height + 'px';
+  target.style.removeProperty('padding-top');
+  target.style.removeProperty('padding-bottom');
+  target.style.removeProperty('margin-top');
+  target.style.removeProperty('margin-bottom');
+  window.setTimeout( () => {
+    target.style.removeProperty('height');
+    target.style.removeProperty('overflow');
+    target.style.removeProperty('transition-duration');
+    target.style.removeProperty('transition-property');
+  }, duration);
+}
+
+/* TOGGLE */
+var toggle = (target, duration = 200) => {
+  if (window.getComputedStyle(target).display === 'none') {
+    return down(target, duration);
+  } else {
+    return up(target, duration);
+  }
+}
+
+module.exports = {up, down, toggle}
+```
+
 ### Get URL Parameter
 
 ``` js
