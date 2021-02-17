@@ -15,12 +15,13 @@ npm install --save-dev @11ty/eleventy
 
 ## Build and Hot Reload
 
-By default, the script to run eleventy is pretty long and hard to type. Since I am used to Nuxt, I changed my script in `package.json` to be the following:
+By default, the script to run eleventy is pretty long and hard to remember.This script will delete the `dist` directory, then repopulate it. This solves the problem with pages created then deleted not being automatically deleted by Eleventy. the `--quiet` is to keep less text in the terminal. I changed my script in `package.json` to be the following:
 
-``` json
+``` json{3}
 {
   "scripts": {
-    "serve": "npx @11ty/eleventy --serve"
+    "serve": "rm -rf dist && npx @11ty/eleventy --serve --quiet"
+    // "serve": "npx @11ty/eleventy --serve"
   },
 }
 ```
@@ -174,3 +175,5 @@ It took me a while to figure out that the issue I was having with using Vue with
 // vue code
 {% endraw %}
 ```
+
+## BrowserSync
