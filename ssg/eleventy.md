@@ -215,25 +215,70 @@ It took me a while to figure out that the issue I was having with using Vue with
 
 BrowserSync is pretty cool, but sometimes you will notice that if you scroll on one page, then see the same page in a different tab or device, it will also scroll. You can turn this off by going to the BrowserSync tools (after you run the serve command) and turn it off.
 
-## Extensions to get
+## Extensions
 
-### Nunjucks Template (eseom)
+### Nunjucks for VSCode (ExE Boss)
 
-For the formatting, I had to disable Prettier, then select the default formatter from this extension, then enable Prettier again for Nunjucks formatting to work.
-
-### Liquid (Νίκος)
-
-Beware that this also tries to mess with `.html` files.
-
-### Path Autocomplete (Mihai Vilcu)
-
-This helps your VS Code intellisense with knowing what files you are trying to link to. You can set the root to the `dist` directory to get accurate linking. Below is an example of ways this will help. Make sure this is in your **workspace settings**, and not your user settings because this will depend on each project.
+Language support for Nunjucks. The biggest benefit here is that it will use the nunjucks comment instead of an HTML comment. Add the following to your workspace settings:
 
 ```json
-"path-autocomplete.pathMappings": {
-  "partials": "${folder}/pages/_includes/partials",
-  "$root": ["${folder}/frontend/dist", "${folder}/frontend/pages"],
+{
+  "files.associations": {
+    "*.njk": "html-nunjucks"
+  },
+  "emmet.includeLanguages": {
+    "njk": "html",
+  },
 }
 ```
 
-Typing `partials/` will show the contents of the partials folder. Typing `/` will look in the `dist` directory so you can easily select pages or assets to link to with thier correct file path.
+### Liquid (Νίκος)
+
+Beware that this also tries to mess with `.html` files, even if you are not using liquid in your project.
+
+### Path Autocomplete (Mihai Vilcu)
+
+ Help with your VS Code intellisense to know what files you are trying to link to. You can set the root to the `dist` directory to get accurate linking. 
+ 
+- Typing `partials/` will show the contents of the partials folder. 
+- Typing `/` will look in the `dist` directory so you can easily select pages or assets to link to with thier correct file path, like images or linking to a page.
+
+ Below is an example of ways this will help. Put the following in your workspace settings:
+
+```json
+{
+  "path-autocomplete.pathMappings": {
+    "partials": "${folder}/pages/_includes/partials",
+    "$root": [
+      "${folder}/dist"
+    ]
+  },
+}
+```
+
+### Prettier
+
+For formatting. I have never liked the other formatting options that are available, so to get Prettier to format your page the same way it will an HTML file, you will need to first, add some configuration in your workspace settings:
+
+```json
+{
+"prettier.documentSelectors": [
+    "**/*.njk"
+  ],
+}
+```
+
+Second, you need to create a `.prettierrc` file in the root and add the following:
+
+```json
+{
+  "overrides": [
+    {
+      "files": "*.njk",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+}
+```
