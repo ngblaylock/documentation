@@ -227,7 +227,7 @@ Language support for Nunjucks. The biggest benefit here is that it will use the 
     "*.njk": "html-nunjucks"
   },
   "emmet.includeLanguages": {
-    "njk": "html",
+    "html-nunjucks": "html",
   },
 }
 ```
