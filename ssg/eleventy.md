@@ -282,3 +282,7 @@ Second, you need to create a `.prettierrc` file in the root and add the followin
   ]
 }
 ```
+
+## Snippets
+
+Depending on your system and your environment setup, you may or may not have access to nunjucks snippets. If you use the Nunjucks extension by ExE Boss, you may need to set up your own snippets. Create a file `/.vscode/html-nunjucks.code-snippets` and paste in all of the snippet code from [this repositiory](https://github.com/vg-land/nunjucks-vscode-snippets/blob/master/snippets/snippets.json). If you just get the extension itself, it will be looking for a file type `Nunjucks` instead of `html-nunjucks`. 
