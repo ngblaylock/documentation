@@ -10,7 +10,7 @@ In the blog, they had you globally install Eleventy, but later I found in the 11
 
 ```bash
 npm init -y
-npm install --save-dev @11ty/eleventy
+npm install --save-dev @11ty/eleventy rimraf cross-env
 ```
 
 ## Sass
@@ -18,7 +18,7 @@ npm install --save-dev @11ty/eleventy
 Instead of using the Live Sass Compiler, use the [Sass plugin](https://www.npmjs.com/package/eleventy-plugin-sass). It isn't as powerful, but it does better with hot reloading. Install the npm package.
 
 ```bash
-npm install eleventy-plugin-sass --save
+npm install eleventy-plugin-sass --save-dev
 ```
 
 The output will be a single css file (unminified) and will be placed at the root of the output folder.
@@ -31,7 +31,7 @@ If you use NVM, you may have an issue with node-sass. Run `npm rebuild node-sass
 
 This is my personal preference for the file setup. All of the template files, including the `_includes` folder should be placed inside of the `pages` directory. The output will be sent to the `dist` directory, or whatever you end up setting it as (like `docs` for GitHub Pages).
 
-In the root of the project you should put all your other non-template containing files like styles, scripts, or other assets. These are folders that you would normally use the file passthrough copy. 
+In the root of the project you should put all your other non-template containing files like styles, scripts, or other assets. These are folders that you would normally use the file passthrough copy.
 
 ```
 /assets
@@ -79,21 +79,25 @@ module.exports = (eleventyConfig) => {
 
 ## Build and Hot Reload
 
-By default, the script to run eleventy is pretty long and hard to remember.This script will delete the `dist` directory, then repopulate it. This solves the problem with pages created then deleted not being automatically deleted by Eleventy. the `--quiet` is to keep less text in the terminal. I changed my script in `package.json` to be the following:
+By default, the script to run eleventy is pretty long and hard to remember, and there are a lot of options you can use. Here is the script:
 
-```json{3}
+```json
 {
   "scripts": {
-    "serve": "rm -rf dist && npx @11ty/eleventy --serve --quiet"
-    // "serve": "npx @11ty/eleventy --serve"
+    "dev": "npm run clean && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --output=dev --quiet",
+    "build": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
+    "clean": "npx rimraf ./dist ./dev"
   }
 }
 ```
 
-Now, when you run `npm run serve` it will not only compile your website, but it will start a hot-reloaded server as well.
+- `npm run clean` will use rimraf to delete the dist and the dev folder. It should work on any operating system.
+- `cross-env ELEVENTY_ENV=*` will set the process.env.ELEVENTY_ENV variable. You can use that in a `_data/global.js` file if you wish. See [11ty's Documentation](https://www.11ty.dev/docs/data-js/#example-exposing-environment-variables) for more details.
+- The `dev` script will hot reload and output the file to the `dev` directory. 
+- The `build` script will only build the file out to the `dist` directory. This will help ensure when you push your site to production, you don't contaminate it with any dev environment variables. 
 
-::: warning
-The remove function only works on Mac and Linux. Windows has a slightly different command.
+:::warning
+Make sure that you run cross-env then immediately 11ty. Otherwise, your environment variable might not get set so you can use it.
 :::
 
 ## Layouts
@@ -227,8 +231,8 @@ Language support for Nunjucks. The biggest benefit here is that it will use the 
     "*.njk": "html-nunjucks"
   },
   "emmet.includeLanguages": {
-    "html-nunjucks": "html",
-  },
+    "html-nunjucks": "html"
+  }
 }
 ```
 
@@ -238,21 +242,19 @@ Beware that this also tries to mess with `.html` files, even if you are not usin
 
 ### Path Autocomplete (Mihai Vilcu)
 
- Help with your VS Code intellisense to know what files you are trying to link to. You can set the root to the `dist` directory to get accurate linking. 
- 
-- Typing `partials/` will show the contents of the partials folder. 
+Help with your VS Code intellisense to know what files you are trying to link to. You can set the root to the `dist` directory to get accurate linking.
+
+- Typing `partials/` will show the contents of the partials folder.
 - Typing `/` will look in the `dist` directory so you can easily select pages or assets to link to with thier correct file path, like images or linking to a page.
 
- Below is an example of ways this will help. Put the following in your workspace settings:
+Below is an example of ways this will help. Put the following in your workspace settings:
 
 ```json
 {
   "path-autocomplete.pathMappings": {
     "partials": "${folder}/pages/_includes/partials",
-    "$root": [
-      "${folder}/dist"
-    ]
-  },
+    "$root": ["${folder}/dist"]
+  }
 }
 ```
 
@@ -262,9 +264,7 @@ For formatting. I have never liked the other formatting options that are availab
 
 ```json
 {
-"prettier.documentSelectors": [
-    "**/*.njk"
-  ],
+  "prettier.documentSelectors": ["**/*.njk"]
 }
 ```
 
@@ -285,4 +285,4 @@ Second, you need to create a `.prettierrc` file in the root and add the followin
 
 ## Snippets
 
-Depending on your system and your environment setup, you may or may not have access to nunjucks snippets. If you use the Nunjucks extension by ExE Boss, you may need to set up your own snippets. Create a file `/.vscode/html-nunjucks.code-snippets` and paste in all of the snippet code from [this repositiory](https://github.com/vg-land/nunjucks-vscode-snippets/blob/master/snippets/snippets.json). If you just get the extension itself, it will be looking for a file type `Nunjucks` instead of `html-nunjucks`. 
+Depending on your system and your environment setup, you may or may not have access to nunjucks snippets. If you use the Nunjucks extension by ExE Boss, you may need to set up your own snippets. Create a file `/.vscode/html-nunjucks.code-snippets` and paste in all of the snippet code from [this repositiory](https://github.com/vg-land/nunjucks-vscode-snippets/blob/master/snippets/snippets.json). If you just get the extension itself, it will be looking for a file type `Nunjucks` instead of `html-nunjucks`.
