@@ -74,7 +74,7 @@ $spacers: map-merge(
 In order to use Sass in your nuxt project, you need to install in the `node-sass` and `sass-loader` webpack loaders.
 
 ```bash
-npm install --save-dev node-sass sass-loader
+npm install --save-dev sass@1.32.* sass-loader@10 fibers
 ```
 
 When changing default style with Nuxt:
