@@ -2,6 +2,10 @@
 
 There are a lot of options out there for databases. Here are some of my favorite free/nearly free ones.
 
+## Cool Blog
+
+This blog might be helpful: [Creating a Website with Vue.js backed by Google Sheets, by Albert Au Yeung](https://albertauyeung.github.io/2020/04/26/vuejs-google-sheets.html)
+
 ## Tabletop
 
 ::: warning
