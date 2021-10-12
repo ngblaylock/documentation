@@ -77,6 +77,8 @@ In order to use Sass in your nuxt project, you need to install in the `node-sass
 npm install --save-dev sass@1.32.* sass-loader@10 fibers
 ```
 
+You should also change in your package.json file the devDependency for sass to `"sass": "~1.32.13",`. Using the `~` will make sure it will stay on 1.32.* which ensures that compiling bootstrap won't throw compiler warnings.
+
 When changing default style with Nuxt:
 
 1. Create a `style/custom.scss` file in the `assets` directory.
