@@ -7,7 +7,7 @@
     <meta name="generator" content="VuePress 1.5.4">
     
     <meta name="description" content="Just playing around">
-    <link rel="preload" href="/assets/css/0.styles.21141aaa.css" as="style"><link rel="preload" href="/assets/js/app.6e4ae46d.js" as="script"><link rel="preload" href="/assets/js/2.364476b3.js" as="script"><link rel="preload" href="/assets/js/20.6997c849.js" as="script"><link rel="prefetch" href="/assets/js/10.2652a5c8.js"><link rel="prefetch" href="/assets/js/11.ed356034.js"><link rel="prefetch" href="/assets/js/12.78ecb586.js"><link rel="prefetch" href="/assets/js/13.ecc73228.js"><link rel="prefetch" href="/assets/js/14.19e1795a.js"><link rel="prefetch" href="/assets/js/15.b31dbfd0.js"><link rel="prefetch" href="/assets/js/16.4a160e91.js"><link rel="prefetch" href="/assets/js/17.a4870729.js"><link rel="prefetch" href="/assets/js/18.efa7be9e.js"><link rel="prefetch" href="/assets/js/19.6aeac8b1.js"><link rel="prefetch" href="/assets/js/21.69a5f2a8.js"><link rel="prefetch" href="/assets/js/22.3c23dd2c.js"><link rel="prefetch" href="/assets/js/23.47d9233f.js"><link rel="prefetch" href="/assets/js/24.6156928d.js"><link rel="prefetch" href="/assets/js/25.ffb096fc.js"><link rel="prefetch" href="/assets/js/26.c3036adb.js"><link rel="prefetch" href="/assets/js/27.fd1ddf94.js"><link rel="prefetch" href="/assets/js/28.7299d6d5.js"><link rel="prefetch" href="/assets/js/29.22a79357.js"><link rel="prefetch" href="/assets/js/3.8d4cf100.js"><link rel="prefetch" href="/assets/js/30.c1ccde43.js"><link rel="prefetch" href="/assets/js/31.2f533d5f.js"><link rel="prefetch" href="/assets/js/32.7ea22fcb.js"><link rel="prefetch" href="/assets/js/4.77a662fb.js"><link rel="prefetch" href="/assets/js/5.73dffa06.js"><link rel="prefetch" href="/assets/js/6.dde338a9.js"><link rel="prefetch" href="/assets/js/7.5026b1a1.js"><link rel="prefetch" href="/assets/js/8.aac2125d.js"><link rel="prefetch" href="/assets/js/9.19d1acb0.js">
+    <link rel="preload" href="/assets/css/0.styles.21141aaa.css" as="style"><link rel="preload" href="/assets/js/app.376c9e5a.js" as="script"><link rel="preload" href="/assets/js/2.3528e6a9.js" as="script"><link rel="preload" href="/assets/js/20.fca8be32.js" as="script"><link rel="prefetch" href="/assets/js/10.b43148f2.js"><link rel="prefetch" href="/assets/js/11.e835d815.js"><link rel="prefetch" href="/assets/js/12.4630a75f.js"><link rel="prefetch" href="/assets/js/13.9628fbdc.js"><link rel="prefetch" href="/assets/js/14.a1bc9906.js"><link rel="prefetch" href="/assets/js/15.e837e832.js"><link rel="prefetch" href="/assets/js/16.6ba62acb.js"><link rel="prefetch" href="/assets/js/17.38c12a57.js"><link rel="prefetch" href="/assets/js/18.026fd30b.js"><link rel="prefetch" href="/assets/js/19.c4a4701b.js"><link rel="prefetch" href="/assets/js/21.c6de2597.js"><link rel="prefetch" href="/assets/js/22.86234c83.js"><link rel="prefetch" href="/assets/js/23.65e78cc8.js"><link rel="prefetch" href="/assets/js/24.6156928d.js"><link rel="prefetch" href="/assets/js/25.b7903e0b.js"><link rel="prefetch" href="/assets/js/26.1dbc12ff.js"><link rel="prefetch" href="/assets/js/27.49105c9d.js"><link rel="prefetch" href="/assets/js/28.e5cd76b3.js"><link rel="prefetch" href="/assets/js/29.cf53f505.js"><link rel="prefetch" href="/assets/js/3.b44fe4a8.js"><link rel="prefetch" href="/assets/js/30.cfafb241.js"><link rel="prefetch" href="/assets/js/31.532088c6.js"><link rel="prefetch" href="/assets/js/32.7ea22fcb.js"><link rel="prefetch" href="/assets/js/4.77a662fb.js"><link rel="prefetch" href="/assets/js/5.73dffa06.js"><link rel="prefetch" href="/assets/js/6.dde338a9.js"><link rel="prefetch" href="/assets/js/7.5026b1a1.js"><link rel="prefetch" href="/assets/js/8.aac2125d.js"><link rel="prefetch" href="/assets/js/9.19d1acb0.js">
     <link rel="stylesheet" href="/assets/css/0.styles.21141aaa.css">
   </head>
   <body>
@@ -84,12 +84,60 @@
   <span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token variable">$spacers</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><h2 id="customize-bootstrap-vue-nuxt"><a href="#customize-bootstrap-vue-nuxt" class="header-anchor">#</a> Customize Bootstrap Vue (Nuxt)</h2> <p>In order to use Sass in your nuxt project, you need to install in the <code>node-sass</code> and <code>sass-loader</code> webpack loaders.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save-dev node-sass sass-loader
-</code></pre></div><p>When changing default style with Nuxt:</p> <ol><li>Create a <code>style/custom.scss</code> file in the <code>assets</code> directory.</li> <li>Create a <code>style/_custom-vars.scss</code> file in the <code>assets</code> directory. This should hold all variables you want to use in the <code>*.vue</code> files in the <code>&lt;style&gt;</code> tag.</li> <li>Inside the <code>style/custom.scss</code> file, enter the following:</li></ol> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// THIS INCLUDES ALL THE CSS OVERRIDES</span>
+</code></pre></div><h2 id="customize-bootstrap-vue-nuxt"><a href="#customize-bootstrap-vue-nuxt" class="header-anchor">#</a> Customize Bootstrap Vue (Nuxt)</h2> <p>In order to use Sass in your nuxt project, you need to install in the <code>node-sass</code> and <code>sass-loader</code> webpack loaders.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save-dev sass@1.32.* sass-loader@10 fibers
+</code></pre></div><p>You should also change in your package.json file the devDependency for sass to <code>&quot;sass&quot;: &quot;~1.32.13&quot;,</code>. Using the <code>~</code> will make sure it will stay on 1.32.* which ensures that compiling bootstrap won't throw compiler warnings.</p> <p>When changing default style with Nuxt:</p> <ol><li>Create a <code>style/custom.scss</code> file in the <code>assets</code> directory.</li> <li>Create a <code>style/_custom-vars.scss</code> file in the <code>assets</code> directory. This should hold all variables you want to use in the <code>*.vue</code> files in the <code>&lt;style&gt;</code> tag.</li> <li>Inside the <code>style/custom.scss</code> file, enter the following:</li></ol> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// THIS INCLUDES ALL THE CSS OVERRIDES</span>
 <span class="token keyword">@import</span> <span class="token string">&quot;custom-vars&quot;</span><span class="token punctuation">;</span>
 <span class="token comment">// THIS WILL INCLUDE THE BOOTSTRAP CSS</span>
 <span class="token keyword">@import</span> <span class="token string">&quot;../../node_modules/bootstrap/scss/bootstrap.scss&quot;</span><span class="token punctuation">;</span>
 <span class="token comment">// WRITE ANY OTHER CSS HERE YOU WANT GLOBALLY IN THE PROJECT</span>
+</code></pre></div><p>OR</p> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// Variable Overrides</span>
+<span class="token comment">// ...</span>
+
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/functions&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/variables&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/mixins&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Theme Overrides</span>
+<span class="token comment">// ...</span>
+
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/root&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/reboot&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/type&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/images&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/code&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/grid&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/tables&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/forms&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/buttons&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/transitions&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/dropdown&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/button-group&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/input-group&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/custom-forms&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/nav&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/navbar&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/card&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/breadcrumb&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/pagination&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/badge&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/jumbotron&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/alert&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/progress&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/media&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/list-group&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/close&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/toasts&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/modal&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/tooltip&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/popover&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/carousel&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/spinners&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/utilities&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;bootstrap/scss/print&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">'bootstrap-vue/src/index.scss'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Additional CSS</span>
+<span class="token comment">// ...</span>
 </code></pre></div><ol start="4"><li>Inside the <code>nuxt.config.js</code> file, include the following:</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>css<span class="token operator">:</span> <span class="token punctuation">[</span>
  <span class="token string">'@/assets/style/custom.scss'</span> <span class="token comment">// THIS LOADS THE CUSTOM &amp; BOOTSTRAP CSS</span>
 <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -103,7 +151,7 @@ bootstrapVue<span class="token operator">:</span> <span class="token punctuation
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre></div><ol start="5"><li>If you need to use variables inside a <code>*.vue</code> file, you can import just the variables with the following:</li></ol> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;~assets/style/_custom-vars.scss&quot;</span><span class="token punctuation">;</span>
 <span class="token comment">// or: @import &quot;~assets/style/custom-vars&quot;;</span>
-</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">8/15/2020, 11:10:32 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">10/12/2021, 8:02:27 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/ssg/vuepress.html" class="prev">
         Vuepress
@@ -112,6 +160,6 @@ bootstrapVue<span class="token operator">:</span> <span class="token punctuation
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.6e4ae46d.js" defer></script><script src="/assets/js/2.364476b3.js" defer></script><script src="/assets/js/20.6997c849.js" defer></script>
+    <script src="/assets/js/app.376c9e5a.js" defer></script><script src="/assets/js/2.3528e6a9.js" defer></script><script src="/assets/js/20.fca8be32.js" defer></script>
   </body>
 </html>
