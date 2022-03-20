@@ -38,8 +38,9 @@ In the root of the project you should put all your other non-template containing
 /img
 /js
 /pages
+  |  _data/
   |  _includes/
-  |    |  paritals/
+  |  _layouts/
   |  (Eleventy Template files)
 /style
   |  (Sass files here)
@@ -59,19 +60,20 @@ This example assumes that you are using Sass, but if you put regular CSS files i
 const pluginSass = require("eleventy-plugin-sass");
 
 module.exports = (eleventyConfig) => {
-  // Copy our static assets to the output folder
+  // Direct Copy
   eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
-  // eleventyConfig.addPassthroughCopy('./styles');
 
+  // Plugins
   eleventyConfig.addPlugin(pluginSass, {});
 
+  // Output
   return {
     dir: {
       input: "pages",
       output: "dist",
+      layouts: "_layouts",
     },
   };
 };
@@ -79,7 +81,7 @@ module.exports = (eleventyConfig) => {
 
 ## Build and Hot Reload
 
-By default, the script to run eleventy is pretty long and hard to remember, and there are a lot of options you can use. Here is the script:
+By default, the script to run eleventy is pretty long and hard to remember, and there are a lot of options you can use. Here is the script to add to your `package.json` file:
 
 ```json
 {
@@ -93,8 +95,8 @@ By default, the script to run eleventy is pretty long and hard to remember, and 
 
 - `npm run clean` will use rimraf to delete the dist and the dev folder. It should work on any operating system.
 - `cross-env ELEVENTY_ENV=*` will set the process.env.ELEVENTY_ENV variable. You can use that in a `_data/global.js` file if you wish. See [11ty's Documentation](https://www.11ty.dev/docs/data-js/#example-exposing-environment-variables) for more details.
-- The `dev` script will hot reload and output the file to the `dev` directory. 
-- The `build` script will only build the file out to the `dist` directory. This will help ensure when you push your site to production, you don't contaminate it with any dev environment variables. 
+- The `dev` script will hot reload and output the file to the `dev` directory.
+- The `build` script will only build the file out to the `dist` directory. This will help ensure when you push your site to production, you don't contaminate it with any dev environment variables.
 
 :::warning
 Make sure that you run cross-env then immediately 11ty. Otherwise, your environment variable might not get set so you can use it.
@@ -104,13 +106,13 @@ Make sure that you run cross-env then immediately 11ty. Otherwise, your environm
 
 Layouts are where Eleventy's power comes from. Unlike Nuxt, Eleventy is not opinionated about the JavaScript framework that you choose. You can use jQuery with Bootstrap 4 without needing to worry about any collisions with Vue.
 
-1. Create a `_includes` folder in the `pages` direcory.
-2. Add a layout. You can call it whatever you want, but probably go with something like `default.liquid`.
+1. Create a `_layouts` folder in the `pages` direcory.
+2. Add a layout. You can call it whatever you want, but probably go with something like `default.njk`.
 3. In the frontmatter, you just need to specify the layout, **or** add `pages.json` in the pages directory to set a default layout for every page.
 
 ### Example Bootstrap Starter
 
-Create a new file called `default.njk` in the `pages/_includes/` directory. This uses Nunjucks.
+Create a new file called `default.njk` in the `pages/_layouts/` directory.
 
 ```html
 <!DOCTYPE html>
@@ -172,7 +174,7 @@ title: Home
 
 ### Nest Layouts
 
-You can next layouts, which is pretty neat. For example, if you have a content page where all pages need to use the container, or another page for a blog, or a left nav. Create a page called `_includes/content.liquid`.
+You can next layouts, which is pretty neat. For example, if you have a content page where all pages need to use the container, or another page for a blog, or a left nav. Create a page called `_layouts/content.njk`.
 
 ```html
 ---
@@ -188,7 +190,7 @@ Then in all the pages that use the content, change the layout in the frontmatter
 
 ### Default Layout for Directory
 
-You can set a default layout for all files in a directory, such as a blog or something else. Unfortunately, I can't find a way to make a default layout for the entire project. How you do this is create a config file in the top level of the directory you want to set. For example, if you want all blog articles to use the same layout, set up a config in `/blog/blog.json` file.
+You can set a default layout for all files in a directory, such as a blog or something else. How you do this is create a config file in the top level of the directory you want to set. For example, if you want all blog articles to use the same layout, set up a config in `pages/blog/blog.json` file.
 
 ```json
 {
@@ -205,14 +207,49 @@ Eleventy has quite a few options for languages that you can choose from. My pref
 ## Vue with Eleventy
 
 ::: v-pre
-It took me a while to figure out that the issue I was having with using Vue with Eleventy is that there was some syntax collisions with Nunjucks/Liquid and Vue. Both use
-`{{ double curly brackets }}` syntax, so using Vue in a standard template will try to convert the template before Vue. Super big thanks to [Raymond Camden's Article](https://www.raymondcamden.com/2020/04/03/quick-tip-on-using-vue-with-eleventy) for helping me find a solution. Simply wrap the entire vue section with a raw statement, and it will not convert the template syntax, so on the output directory, it will then allow Vue to run as expected.
+It took me a while to figure out that the issue I was having with using Vue with Eleventy is that there was some syntax collisions with Nunjucks/Liquid and Vue. Both use `{{ double curly brackets }}` syntax, so using Vue in a standard template will try to convert the template before Vue. Super big thanks to [Raymond Camden's Article](https://www.raymondcamden.com/2020/04/03/quick-tip-on-using-vue-with-eleventy) for helping me find a solution. Simply wrap the entire vue section with a raw statement, and it will not convert the template syntax, so on the output directory, it will then allow Vue to run as expected.
 :::
 
 ```js
 {% raw %}
 // vue code, probably the whole file.
 {% endraw %}
+```
+
+## Better Logging
+
+Eleventy comes pre-loaded with a filter to [log data to the console](https://www.11ty.dev/docs/filters/log/). However, this is kinda not helpful if you are logging a lot of data because the terminal will cut off some of the lines. To get all the lines, it is better to log them to the browser. 
+
+You can customize the output to format like a code block by using the [syntax highlighting plugin](https://www.11ty.dev/docs/plugins/syntaxhighlight/). Be sure that you are parsing the code with markdown or else you may see html entities in place of the single or double quotes. If that doesn't work well for you, then wrapping it in a `<pre>` might be helpful.
+
+`pages/log.md`
+
+<!-- prettier-ignore-start -->
+````markdown
+---
+title: Log
+---
+
+<!-- Change the `collections.all` below to whatever data value you want to look at  -->
+
+```js
+{{ collections.all | pageLog; }}
+```
+````
+<!-- prettier-ignore-end -->
+
+Merge this in with your `.eleventy.js` file.
+
+```js
+const inspect = require("util").inspect;
+
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addFilter("pageLog", (content) => {
+    // content is the data you want to log to the page
+    return `${inspect(content)}`;
+  });
+};
 ```
 
 ## BrowserSync
