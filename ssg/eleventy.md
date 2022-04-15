@@ -15,13 +15,39 @@ npm install --save-dev @11ty/eleventy rimraf cross-env
 
 ## Sass
 
-Instead of using the Live Sass Compiler, use the [Sass plugin](https://www.npmjs.com/package/eleventy-plugin-sass). It isn't as powerful, but it does better with hot reloading. Install the npm package.
+I like to use Sass for my projects, specifically to compile Bootstrap v4. Bootstrap uses node-sass, so using the same compiler is best. Unfortunately, there isn't a really good plugin with Eleventy for node-sass, but there is an effective workaround.
 
-```bash
-npm install eleventy-plugin-sass --save-dev
+:::tip NOTE
+If you install Bootstrap through NPM, then you don't really need to install `node-sass` since it is already there for Bootstrap.
+:::
+
+In your `package.json` file, use the following scripts. You will need to change your Sass input and output paths according to your configuration:
+
+```json
+"scripts": {
+  // compile sass for production
+  "sass:build:dist": "node-sass ./scss/filename.scss ./dist/style/filename.css --output-style compressed",
+  // compile sass on initial eleventy development build
+  "sass:build:dev": "node-sass ./scss/filename.scss ./dev/style/filename.css",
+  // compile sass when a sass file changes
+  "sass:watch:dev": "npm run sass:build:dev && node-sass ./scss/filename.scss ./dev/style/filename.css -w",
+  // development environment
+  "dev": "npm run clean && cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve --output=dev & npm run sass:watch:dev",
+  // clean the output folders before each build
+  "clean": "npx rimraf ./dist ./dev",
+  // build eleventy for production
+  "build": "npm run clean && cross-env ELEVENTY_ENV=prod npx @11ty/eleventy --output=dist && npm run sass:build:dist",
+  // other scripts
+}
 ```
 
-The output will be a single css file (unminified) and will be placed at the root of the output folder.
+In your `.eleventy.config` you need to make sure that eleventy is aware of when your Sass file changes to rebuild the site. This filepath will need to point to wherever you keep your Sass files. You do not need to worry about any passthrough copy since Node Sass will compile your scripts directly to the output folder if you configure it correctly.
+
+```js
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addWatchTarget("./scss/");
+};
+```
 
 ::: warning
 If you use NVM, you may have an issue with node-sass. Run `npm rebuild node-sass` and wait a few minutes (really, like 10 or so), then it should work.
@@ -42,7 +68,7 @@ In the root of the project you should put all your other non-template containing
   |  _includes/
   |  _layouts/
   |  (Eleventy Template files)
-/style
+/scss
   |  (Sass files here)
 ```
 
@@ -50,23 +76,15 @@ In the root of the project you should put all your other non-template containing
 
 Here is a pretty basic configuration file that I like to use. Basically, it outputs the build in the `dist` directory and it will include the build from the `assets`, `styles`, `img`, and `js` directories that you need to include. Also, if you have a `CNAME`, which you probably will have, it will include that as well.
 
-::: warning
-This example assumes that you are using Sass, but if you put regular CSS files in the `styles` directory, then just remove the Sass plugin and add `styles` to the passthrough copy function.
-:::
-
 ```js
 // .eleventy.js (in the project root)
-
-const pluginSass = require("eleventy-plugin-sass");
 
 module.exports = (eleventyConfig) => {
   // Direct Copy
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
-
-  // Plugins
-  eleventyConfig.addPlugin(pluginSass, {});
+  eleventyConfig.addPassthroughCopy("style");
 
   // Output
   return {
@@ -81,7 +99,7 @@ module.exports = (eleventyConfig) => {
 
 ## Build and Hot Reload
 
-By default, the script to run eleventy is pretty long and hard to remember, and there are a lot of options you can use. Here is the script to add to your `package.json` file:
+By default, the script to run eleventy is pretty long and hard to remember, and there are a lot of options you can use. Here is the script to add to your `package.json` file. For Sass configuration, see the Sass section above.
 
 ```json
 {
@@ -99,14 +117,14 @@ By default, the script to run eleventy is pretty long and hard to remember, and 
 - The `build` script will only build the file out to the `dist` directory. This will help ensure when you push your site to production, you don't contaminate it with any dev environment variables.
 
 :::warning
-Make sure that you run cross-env then immediately 11ty. Otherwise, your environment variable might not get set so you can use it.
+Make sure that you run cross-env then immediately 11ty. Otherwise, your environment variable might not get set correctly.
 :::
 
 ## Layouts
 
 Layouts are where Eleventy's power comes from. Unlike Nuxt, Eleventy is not opinionated about the JavaScript framework that you choose. You can use jQuery with Bootstrap 4 without needing to worry about any collisions with Vue.
 
-1. Create a `_layouts` folder in the `pages` direcory.
+1. Create a `_layouts` folder in the `pages` directory.
 2. Add a layout. You can call it whatever you want, but probably go with something like `default.njk`.
 3. In the frontmatter, you just need to specify the layout, **or** add `pages.json` in the pages directory to set a default layout for every page.
 
@@ -164,10 +182,7 @@ title: Home
 <div class="container pt-5">
   <h1>11ty Test</h1>
   <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem animi
-    cumque perferendis quisquam totam incidunt vel eaque. Modi laboriosam
-    quisquam fugit deserunt dolorem ducimus, cumque nisi sed. Aperiam, quam
-    incidunt.
+    Something here...
   </p>
 </div>
 ```
@@ -190,7 +205,7 @@ Then in all the pages that use the content, change the layout in the frontmatter
 
 ### Default Layout for Directory
 
-You can set a default layout for all files in a directory, such as a blog or something else. How you do this is create a config file in the top level of the directory you want to set. For example, if you want all blog articles to use the same layout, set up a config in `pages/blog/blog.json` file.
+You can set a default layout for all files in a directory, such as a blog or something else. How you do this is create a config file in the top level of the directory you want to set. For example, if you want all blog articles to use the same layout, set up a config in `pages/blog/blog.json` file. Adding this to `pages/pages.json` will set defaults for the entire site.
 
 ```json
 {
@@ -218,7 +233,7 @@ It took me a while to figure out that the issue I was having with using Vue with
 
 ## Better Logging
 
-Eleventy comes pre-loaded with a filter to [log data to the console](https://www.11ty.dev/docs/filters/log/). However, this is kinda not helpful if you are logging a lot of data because the terminal will cut off some of the lines. To get all the lines, it is better to log them to the browser. 
+Eleventy comes pre-loaded with a filter to [log data to the console](https://www.11ty.dev/docs/filters/log/). However, this is kinda not helpful if you are logging a lot of data because the terminal will cut off some of the lines. To get all the lines, it is better to log them to the browser.
 
 You can customize the output to format like a code block by using the [syntax highlighting plugin](https://www.11ty.dev/docs/plugins/syntaxhighlight/). Be sure that you are parsing the code with markdown or else you may see html entities in place of the single or double quotes. If that doesn't work well for you, then wrapping it in a `<pre>` might be helpful.
 
@@ -258,20 +273,9 @@ BrowserSync is pretty cool, but sometimes you will notice that if you scroll on 
 
 ## Extensions
 
-### Nunjucks for VSCode (ExE Boss)
+### Better Nunjucks (ginfuru)
 
-Language support for Nunjucks. The biggest benefit here is that it will use the nunjucks comment instead of an HTML comment. Add the following to your workspace settings:
-
-```json
-{
-  "files.associations": {
-    "*.njk": "html-nunjucks"
-  },
-  "emmet.includeLanguages": {
-    "html-nunjucks": "html"
-  }
-}
-```
+Great language support for Nunjucks in Eleventy.
 
 ### Liquid (Νίκος)
 
@@ -282,7 +286,7 @@ Beware that this also tries to mess with `.html` files, even if you are not usin
 Help with your VS Code intellisense to know what files you are trying to link to. You can set the root to the `dist` directory to get accurate linking.
 
 - Typing `partials/` will show the contents of the partials folder.
-- Typing `/` will look in the `dist` directory so you can easily select pages or assets to link to with thier correct file path, like images or linking to a page.
+- Typing `/` will look in the `dist` directory so you can easily select pages or assets to link to with their correct file path, like images or linking to a page.
 
 Below is an example of ways this will help. Put the following in your workspace settings:
 
@@ -297,29 +301,4 @@ Below is an example of ways this will help. Put the following in your workspace 
 
 ### Prettier
 
-For formatting. I have never liked the other formatting options that are available, so to get Prettier to format your page the same way it will an HTML file, you will need to first, add some configuration in your workspace settings:
-
-```json
-{
-  "prettier.documentSelectors": ["**/*.njk"]
-}
-```
-
-Second, you need to create a `.prettierrc` file in the root and add the following:
-
-```json
-{
-  "overrides": [
-    {
-      "files": "*.njk",
-      "options": {
-        "parser": "html"
-      }
-    }
-  ]
-}
-```
-
-## Snippets
-
-Depending on your system and your environment setup, you may or may not have access to nunjucks snippets. If you use the Nunjucks extension by ExE Boss, you may need to set up your own snippets. Create a file `/.vscode/html-nunjucks.code-snippets` and paste in all of the snippet code from [this repositiory](https://github.com/vg-land/nunjucks-vscode-snippets/blob/master/snippets/snippets.json). If you just get the extension itself, it will be looking for a file type `Nunjucks` instead of `html-nunjucks`.
+For formatting.
