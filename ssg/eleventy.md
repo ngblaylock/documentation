@@ -45,7 +45,9 @@ In your `.eleventy.config` you need to make sure that eleventy is aware of when 
 
 ```js
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addWatchTarget("./scss/");
+  eleventyConfig.setBrowserSyncConfig({
+    files: "./dev/styles/*.css",
+  });
 };
 ```
 
