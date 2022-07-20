@@ -43,3 +43,10 @@ main {
   /* IE10+ CSS here */
 }
 ```
+
+## Color Generator
+
+I often like to use color variables that span from `color-100` to `color-900` but sometimes it is difficult to generate these colors. There are two tools that I like to use that make this easier to use.
+
+- [hihayk.github.io/scale](https://hihayk.github.io/scale/#4/4/75/75/0/0/0/0/C62617/204/38/23/white) : This is best for having one color and needing to generate lighter and darker versions of it.
+- [colordesigner.io](https://colordesigner.io/gradient-generator/?mode=lch#FBE6E6-27070D) : This is best for having the lightest and darkest color, then generating all the colors in between.
