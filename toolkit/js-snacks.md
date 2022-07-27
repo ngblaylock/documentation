@@ -279,3 +279,7 @@ for (const file of files) {
   }
 }
 ```
+
+## Node Version Manager (NVM)
+
+NVM is the only way I have really been able to get node working on my Linux machine. If you need a refresher on how to use NVM or to uninstall/install it, there is a great [blog article on Linode](https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/).
