@@ -1,6 +1,6 @@
 # Eleventy (11ty)
 
-## Getting Started TEST
+## Getting Started
 
 Eleventy is a very easy static site generator to use. I was at first discouraged by the documentation, and it seemed like it had a lot in there. The more I use it the more it makes sense. The first thing that I did was followed along with this [blog](https://www.digitalocean.com/community/tutorials/js-eleventy) and this [video](https://www.learnwithjason.dev/let-s-learn-eleventy) which helped out a lot.
 
