@@ -4,7 +4,6 @@ module.exports = {
   description: "Just playing around",
   themeConfig: {
     smoothScroll: true,
-    lastUpdated: "Last Updated",
     nav: [
       {
         text: "Home",
