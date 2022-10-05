@@ -48,3 +48,7 @@ The old way I did this was by doing some weird clone where you put your username
 ::: tip NOTE
 If you use GitHub Desktop, you can clone private repos in the app, so you don't need to do this.
 :::
+
+## GitHub Actions Deploy
+
+Use the code snippets from [peaceiris](https://github.com/peaceiris/actions-gh-pages) if you don't want to build your site on your personal machine. This is used in this documentation so I can edit files on GitHub and just commit them to deploy the new site.
