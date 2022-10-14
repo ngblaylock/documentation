@@ -50,6 +50,7 @@ module.exports = {
           "/ssg/eleventy",
           "/ssg/nuxt",
           "/ssg/vuepress",
+          "/ssg/sveltekit",
         ]
       },
       {
