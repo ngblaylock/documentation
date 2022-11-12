@@ -34,6 +34,44 @@ or
 </script>
 ```
 
+## Generating a Static Site
+
+To generate a static website you must set the adapter to `@sveltejs/adapter-static` in the svelte.config.js file. That way when you run `npm run build` it makes a static site instead of a SSR website.
+
+Another important thing to add is create a `+layout.**ts**` at the root of the `src` directory. Add the following to that file:
+
+```ts
+export const prerender = true;
+```
+
+## Error Page
+
+I haven't quite figured this out, but the +error.svelte page does not directly transfer over to the 404.html page. I need to look into this a little more.
+
+## Deploying to GitHub Pages
+
+One thing that tripped me up was that there were a lot of files that were ignored from GitHub Pages. After doing research and waiting for the domain to correctly register, I found that directories and files preceding with an `_` are ignored by default. To fix this, simply add a `.nojekyll` file in the static directory. This is an empty file and you don't need to do anything but create it.
+
+The next thing to do is to change the output directory from `build` to `docs`. In the `svelte.config.js` file, make sure the folowing is there:
+
+```js
+import adapter from '@sveltejs/adapter-static';
+
+const config = {
+  kit: {
+    adapter: adapter({
+      pages: 'docs',
+      assets: 'docs',
+    })
+  }
+};
+
+```
+
+Then in GitHub make sure the pages is hosted from the master branch at /docs. 
+
+I don't know how to do this at a sub path, this will only work at a subdomain setup.
+
 ## Nuggets
 
 https://github.com/sveltejs/kit/issues/3127#issuecomment-1225840065
