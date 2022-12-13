@@ -197,16 +197,26 @@ console.log(
 console.log(getParameterByName("isCool"));
 ```
 
-### To Dollar Amount:
+### Number to Currency (Dollars):
 
 ``` js
-// https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
-function toDollar(value) {
-  return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-}
+// modified from https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+const formatCurrency = (value, decimal = false) => {
+  if (!value || isNaN(value)) {
+    console.error("Cannot format value:", value)
+    return '';
+  }
+  value = parseFloat(value);
+  if (decimal) {
+    return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
+  return '$' + value.toFixed(0).replace(/\d(?=(\d{3})+$)/g, '$&,');
+};
 
-console.log(toDollar(1234567.896))   // $1,234,567.90
-console.log(toDollar('1234567.896'))   // $1,234,567.90
+console.log(formatCurrency(1234567.896, true))     // '$1,234,567.90'
+console.log(formatCurrency('1234567.896', true))   // '$1,234,567.90'
+console.log(formatCurrency(1234567.896))           // '$1,234,568'
+console.log(formatCurrency('1234567.896'))         // '$1,234,568'
 ```
 
 ## Check Browser for Internet Explorer
