@@ -1,0 +1,3 @@
+# Firebase Emulator
+
+Temporary data here...
