@@ -41,7 +41,8 @@ module.exports = {
           "/firebase/authentication",
           "/firebase/firestore",
           "/firebase/storage",
-          "/firebase/securityrules"
+          "/firebase/securityrules",
+          "/firebase/emulator"
         ]
       },
       {
