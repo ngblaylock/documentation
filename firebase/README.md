@@ -8,6 +8,10 @@ You should only need to install firebase tools if you are going to either be usi
 sudo npm install -g firebase-tools
 ```
 
+## Firebase Init
+
+I had an issue with `firebase init` where it said that I didn't have any databases created, but I had. So I did some digging and [this worked](https://github.com/firebase/firebase-tools/issues/4254#issuecomment-1310619259).
+
 ## Standard HTML Setup
 
 Start out by getting the project set up. Some things that you are going to need are the SDK. Put this in order, before any custom scripts that you write.
