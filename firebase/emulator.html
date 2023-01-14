@@ -7,7 +7,7 @@
     <meta name="generator" content="VuePress 1.5.4">
     
     <meta name="description" content="Just playing around">
-    <link rel="preload" href="/assets/css/0.styles.71bf5e18.css" as="style"><link rel="preload" href="/assets/js/app.c594cbb3.js" as="script"><link rel="preload" href="/assets/js/2.300c1178.js" as="script"><link rel="preload" href="/assets/js/9.ec0a9a83.js" as="script"><link rel="prefetch" href="/assets/js/10.6d522eea.js"><link rel="prefetch" href="/assets/js/11.5ccb14ae.js"><link rel="prefetch" href="/assets/js/12.da257c3d.js"><link rel="prefetch" href="/assets/js/13.05512e51.js"><link rel="prefetch" href="/assets/js/14.27eec07d.js"><link rel="prefetch" href="/assets/js/15.7542909f.js"><link rel="prefetch" href="/assets/js/16.c7f0ebf0.js"><link rel="prefetch" href="/assets/js/17.ad528978.js"><link rel="prefetch" href="/assets/js/18.3dc9aa3a.js"><link rel="prefetch" href="/assets/js/19.62c91bb6.js"><link rel="prefetch" href="/assets/js/20.c07c4f3c.js"><link rel="prefetch" href="/assets/js/21.ca91a580.js"><link rel="prefetch" href="/assets/js/22.bd84f688.js"><link rel="prefetch" href="/assets/js/23.cf34be02.js"><link rel="prefetch" href="/assets/js/24.c09eb067.js"><link rel="prefetch" href="/assets/js/25.7ad7cc62.js"><link rel="prefetch" href="/assets/js/26.a4b26bed.js"><link rel="prefetch" href="/assets/js/27.5f9f827e.js"><link rel="prefetch" href="/assets/js/28.520bda8f.js"><link rel="prefetch" href="/assets/js/29.c903100e.js"><link rel="prefetch" href="/assets/js/3.d48fa9fb.js"><link rel="prefetch" href="/assets/js/30.9eb72e3b.js"><link rel="prefetch" href="/assets/js/31.badf228d.js"><link rel="prefetch" href="/assets/js/32.54927b7b.js"><link rel="prefetch" href="/assets/js/33.ad1f9519.js"><link rel="prefetch" href="/assets/js/34.742cede3.js"><link rel="prefetch" href="/assets/js/4.d3fdb414.js"><link rel="prefetch" href="/assets/js/5.7bc68d25.js"><link rel="prefetch" href="/assets/js/6.0d0c404a.js"><link rel="prefetch" href="/assets/js/7.4e8d9b57.js"><link rel="prefetch" href="/assets/js/8.c3dc5c6d.js">
+    <link rel="preload" href="/assets/css/0.styles.71bf5e18.css" as="style"><link rel="preload" href="/assets/js/app.e7875cce.js" as="script"><link rel="preload" href="/assets/js/2.300c1178.js" as="script"><link rel="preload" href="/assets/js/9.c34f86af.js" as="script"><link rel="prefetch" href="/assets/js/10.6d522eea.js"><link rel="prefetch" href="/assets/js/11.5ccb14ae.js"><link rel="prefetch" href="/assets/js/12.da257c3d.js"><link rel="prefetch" href="/assets/js/13.05512e51.js"><link rel="prefetch" href="/assets/js/14.27eec07d.js"><link rel="prefetch" href="/assets/js/15.7542909f.js"><link rel="prefetch" href="/assets/js/16.c7f0ebf0.js"><link rel="prefetch" href="/assets/js/17.ad528978.js"><link rel="prefetch" href="/assets/js/18.3dc9aa3a.js"><link rel="prefetch" href="/assets/js/19.62c91bb6.js"><link rel="prefetch" href="/assets/js/20.c07c4f3c.js"><link rel="prefetch" href="/assets/js/21.ca91a580.js"><link rel="prefetch" href="/assets/js/22.bd84f688.js"><link rel="prefetch" href="/assets/js/23.cf34be02.js"><link rel="prefetch" href="/assets/js/24.c09eb067.js"><link rel="prefetch" href="/assets/js/25.7ad7cc62.js"><link rel="prefetch" href="/assets/js/26.a4b26bed.js"><link rel="prefetch" href="/assets/js/27.5f9f827e.js"><link rel="prefetch" href="/assets/js/28.520bda8f.js"><link rel="prefetch" href="/assets/js/29.c903100e.js"><link rel="prefetch" href="/assets/js/3.d48fa9fb.js"><link rel="prefetch" href="/assets/js/30.9eb72e3b.js"><link rel="prefetch" href="/assets/js/31.badf228d.js"><link rel="prefetch" href="/assets/js/32.54927b7b.js"><link rel="prefetch" href="/assets/js/33.ad1f9519.js"><link rel="prefetch" href="/assets/js/34.742cede3.js"><link rel="prefetch" href="/assets/js/4.d3fdb414.js"><link rel="prefetch" href="/assets/js/5.7bc68d25.js"><link rel="prefetch" href="/assets/js/6.0d0c404a.js"><link rel="prefetch" href="/assets/js/7.4e8d9b57.js"><link rel="prefetch" href="/assets/js/8.c3dc5c6d.js">
     <link rel="stylesheet" href="/assets/css/0.styles.71bf5e18.css">
   </head>
   <body>
@@ -49,7 +49,59 @@ console<span class="token punctuation">.</span><span class="token function">log<
   auth<span class="token punctuation">.</span><span class="token function">useEmulator</span><span class="token punctuation">(</span><span class="token string">&quot;http://localhost:9099&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre></div><p>I learned that using the auth pre-built UI doesn't connect to the emulator. But I don't think I would use that in a real site anyway.</p> <h2 id="start-the-emulator-with-data"><a href="#start-the-emulator-with-data" class="header-anchor">#</a> Start the Emulator with Data</h2> <p>You can start the emulator with the previous data you had by running a specific command. This is not from the cloud, but whatever you are locally testing.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>firebase emulators:start --import<span class="token operator">=</span>test-data --export-on-exit
-</code></pre></div><p>It doesn't look like the <code>test-data</code> directory needs to exist to import. It will be the name of the directory for the exported data.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>It doesn't look like the <code>test-data</code> directory needs to exist to import. It will be the name of the directory for the exported data.</p> <h3 id="copy-production-data-to-emulator"><a href="#copy-production-data-to-emulator" class="header-anchor">#</a> Copy production data to emulator</h3> <p>This script is heavily based off of <a href="https://medium.com/firebase-developers/how-to-import-production-data-from-cloud-firestore-to-the-local-emulator-e82ae1c6ed8" target="_blank" rel="noopener noreferrer">this article<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <p>It's a pain to start from scratch with given data. This is a way to get a copy of live data to the emulator that you can freely manipulate and it won't affect production.</p> <p>This script uses <strong>sandbox-ca45d</strong> as the project ID (found in the app settings or <code>firebase projects:list</code>), and uses <strong>test-data</strong> for the directory  where the data goes.</p> <p>Name this file <code>refreshdb.sh</code>, put it in the root of the project, and run <code>bash refreshdb.sh</code>.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">set</span> -e
+
+<span class="token comment"># This was taken from this article: </span>
+<span class="token comment"># https://medium.com/firebase-developers/how-to-import-production-data-from-cloud-firestore-to-the-local-emulator-e82ae1c6ed8</span>
+
+<span class="token comment"># 1. Make sure Python 3 and gsutil are installed</span>
+  <span class="token comment"># python3 -V</span>
+  <span class="token comment"># gsutil version</span>
+
+<span class="token comment"># 2. Make sure that billing is enabled (and set a limit of $2)</span>
+  <span class="token comment"># Note that this is just for alerts. It doesn't shut down the project if it goes over.</span>
+  <span class="token comment"># Firebase Console -&gt; Spark Plan change to Blaze</span>
+
+<span class="token comment"># 3. Initial Setup. You should only need to do this once</span>
+  <span class="token comment"># firebase login</span>
+  <span class="token comment"># firebase projects:list</span>
+  <span class="token comment"># firebase use sandbox-ca45d</span>
+  <span class="token comment"># gcloud projects list</span>
+  <span class="token comment"># gcloud config set project sandbox-ca45d </span>
+
+<span class="token comment"># 4. Optional, manual way to copy data</span>
+  <span class="token comment"># # 4.a Remove old data</span>
+  <span class="token comment"># rm -rf ./test-data</span>
+  <span class="token comment"># gsutil -m rm -rf gs://sandbox-ca45d.appspot.com/test-data</span>
+
+  <span class="token comment"># # 4.b Add new data</span>
+  <span class="token comment"># gcloud firestore export gs://sandbox-ca45d.appspot.com/test-data</span>
+  <span class="token comment"># gsutil -m cp -r gs://sandbox-ca45d.appspot.com/test-data .</span>
+
+<span class="token comment"># 5. Use this instead of 4</span>
+
+<span class="token comment">#Remove previous bucket if exists</span>
+<span class="token function-name function">delete_previous_version_if_exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">#We either delete local folder and bucket object or just a bucket</span>
+  <span class="token function">rm</span> -rf ./test-data <span class="token operator">&amp;&amp;</span>
+  gsutil -m <span class="token function">rm</span> -rf gs://sandbox-ca45d.appspot.com/test-data <span class="token operator">||</span>
+  gsutil -m <span class="token function">rm</span> -rf gs://sandbox-ca45d.appspot.com/test-data
+<span class="token punctuation">}</span>
+
+<span class="token function-name function">export_production_firebase_to_emulator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">#Export production firebase to emulator bucket</span>
+  gcloud firestore <span class="token builtin class-name">export</span> gs://sandbox-ca45d.appspot.com/test-data
+  
+  <span class="token comment">#Copy to local folder</span>
+  gsutil -m <span class="token function">cp</span> -r gs://sandbox-ca45d.appspot.com/test-data <span class="token builtin class-name">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#Run bash functions, either delete previous bucket and local folder if exists for update or just export clean way</span>
+delete_previous_version_if_exists <span class="token operator">&amp;&amp;</span> export_production_firebase_to_emulator <span class="token operator">||</span>
+export_production_firebase_to_emulator
+
+firebase emulators:start --import<span class="token operator">=</span>test-data --export-on-exit
+</code></pre></div><p>For any subsequent sessions you can just run <code>firebase emulators:start --import=test-data --export-on-exit</code> which will preserve your data from production with whatever modifications you made. If you need to start with a mirror copy of production, you will need to run <code>bash refreshdb.sh</code> again.</p> <div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>Every time you refresh data all of the authentication set up will disapear. <strong>ALSO</strong> I still need to test this script with cloud storage and functions and such. I have only tested this with Firestore.</p></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/firebase/securityrules.html" class="prev">
         Security Rules
@@ -58,6 +110,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.c594cbb3.js" defer></script><script src="/assets/js/2.300c1178.js" defer></script><script src="/assets/js/9.ec0a9a83.js" defer></script>
+    <script src="/assets/js/app.e7875cce.js" defer></script><script src="/assets/js/2.300c1178.js" defer></script><script src="/assets/js/9.c34f86af.js" defer></script>
   </body>
 </html>
