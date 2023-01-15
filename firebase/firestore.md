@@ -55,6 +55,21 @@ firebase
   });
 ```
 
+One cool thing you can do is add a timestamp to your item. This will be whatever is set on the server, not on the client. [Fireship](https://fireship.io/snippets/firestore-increment-document-id-value/) shows this.
+
+```js
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+
+firebase
+  .firestore()
+  .collection("collectionName")
+  .add({
+    name: "Bobby Joe",
+    city: "Bobby's World",
+    createdAt: timestamp(),
+  });
+```
+
 ## Delete Data
 
 You will probably need to add an event listener to each spot you want to delete.
