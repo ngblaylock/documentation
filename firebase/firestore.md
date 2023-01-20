@@ -84,7 +84,19 @@ firebase
 
 ## Querying Data
 
-You can query data by certain conditions such as using `where` combined with `==`, `>`, `<`, etc. or doing an `orderby` function. Then Firebase will only return documents given those considtions.
+You can query data by certain conditions such as using `where` combined with `==`, `>`, `<`, etc. or doing an `orderby` function. Then Firebase will only return documents given those considtions. You **cannot** search by case insensitive.
+
+You can run a query by what a string starts with using the following (fount on [this](https://stackoverflow.com/questions/46568142/google-firestore-query-on-substring-of-a-property-value-text-search) thread:
+
+```js
+let res = await firebase
+  .firestore()
+  .collection("people")
+  .where("first", ">=", "Za")
+  .where("first", "<=", "Za" + "\uf8ff")
+  .get();
+console.log(res.docs.map((doc) => doc.data()));
+```
 
 ## Update and Set
 
