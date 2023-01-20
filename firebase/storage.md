@@ -46,6 +46,18 @@ If you upload a file to the same file path using the same name, the new image wi
 
 It is best to store the upload reference AND the upload URL in firestore. That way, you can easily refer to it for reading, updating, and deleting.
 
+
+### Upload a File with Metadata
+
+If you want to attach any metadata to the upload (like uid) you can attach it at the time you upload the file. In the `put` function pass in `{customMetadata: <object>}`, <object> being the object of custom metadata information you want to add. This can come in [handy with security rules](https://stackoverflow.com/questions/42653967/firebase-storage-custom-metadata-security-rule-for-list-of-uids).
+
+```js
+let uploadTask = firebase
+  .storage()
+  .ref(`images/upload.jpg`)
+  .put(this.fileToUpload, {customMetadata: {'uploadedBy': "Nathan"}});
+```
+
 ## Download a File URL
 
 ```js
