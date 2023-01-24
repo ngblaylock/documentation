@@ -11,6 +11,12 @@ These are some profile images that you can use in whatever project you want. I s
 <img src="/noimage-400x600.png" style="max-height: 200px;">
 <img src="/noimage-500x700.png" style="max-height: 200px;">
 
+## Test Document
+
+Use this if you need a test document to test out uploads. For images just use Unsplash or Pixabay.
+
+<a href="/test-document.pdf" target="_blank">test-document.pdf</a>
+
 ## Folder Icons
 
 I find it fun to customize some folders so they stand out a little more. On Mac OS Catalina, you can get system icons. Simply go to `Finder > Go > Go to Folder` and paste in the path below.
