@@ -42,6 +42,7 @@ Another important thing to add is create a `+layout.**ts**` at the root of the `
 
 ```ts
 export const prerender = true;
+export const trailingSlash = 'always';
 ```
 
 ## Error Page
