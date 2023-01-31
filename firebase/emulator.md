@@ -6,6 +6,10 @@ The emulator allows you to make changes to local, temporary data. By default it 
 
 I had a little trouble with the setup, but eventually figured it out. You need to have Java installed to run the emulator. For my Mac m2 I needed to install the [Arm 64 DMG Installer](https://www.oracle.com/java/technologies/downloads/#jdk17-mac). 
 
+::: warning
+If you run into the error `Error: It looks like you haven't used Cloud Firestore in this project before` follow the instructions at this [Stack Overflow thread](https://stackoverflow.com/a/74532000/7758781).
+:::
+
 ## Connect to the Emulator
 
 ```js
