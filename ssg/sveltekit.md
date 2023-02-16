@@ -1,5 +1,40 @@
 # SvelteKit
 
+## Configuration
+
+You can add alias' to certain folders for importing. It is handy especially since there are no auto imports. VS Code can help with the import process, but having this sort of alias is handy to help it find what you are looking for.
+
+```js
+//svelte.config.js
+
+const config = {
+  kit: {
+    alias: {
+      $components: './src/lib/components',
+    },
+  },
+};
+```
+
+You can use a cool experimental feature that allows you to click your page and it will take you to the code in VS Code. This makes it so when you are in Development mode you can hold Command+Shift and hover over an element to click. Documentation on the feature is found at https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/config.md#inspector
+
+```js
+//svelte.config.js
+
+const config = {
+  // ... Other configuration
+  vitePlugin: {
+    experimental: {
+      inspector: {
+        toggleKeyCombo: 'meta-shift',
+        holdMode: true,
+        showToggleButton: 'never',
+      }
+    },
+  },
+};
+```
+
 ## Sass
 
 SvelteKit comes with the preprocessor already available. All you need to do is run `npm install Sass -D`. 
