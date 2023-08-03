@@ -42,11 +42,16 @@ SvelteKit comes with the preprocessor already available. All you need to do is r
 To make variables accessible from any and add the following to svelte.config.js.
 
 ``` js
-preprocess: preprocess({
-  scss: {
-    prependData: `@import './src/sass/_variables.scss';`
-  }
-}),
+import preprocess from 'svelte-preprocess';
+
+const config = {
+    preprocess: preprocess({
+        scss: {
+            prependData: `@import './src/style/app.scss';`
+        }
+    })
+    ...
+};
 ```
 
 To add global styles to all pages, add the following to the main +layout.svelte file.
