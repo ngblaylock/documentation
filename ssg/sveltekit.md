@@ -130,3 +130,15 @@ https://github.com/sveltejs/kit/issues/3127#issuecomment-1225840065
   });
 </script>
 ```
+
+### Comments in VS Code on hover
+
+Add this to the beginning of a component. When you hover over that component reference this will show up.
+
+```html
+<!--
+  @component
+  ## Title
+  You can use `markdown` in this.
+-->
+```
