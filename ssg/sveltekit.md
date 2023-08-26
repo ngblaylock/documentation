@@ -115,6 +115,8 @@ I don't know how to do this at a sub path, this will only work at a subdomain se
 
 ## Nuggets
 
+### Analytics
+
 https://github.com/sveltejs/kit/issues/3127#issuecomment-1225840065
 
 ``` html
@@ -141,4 +143,16 @@ Add this to the beginning of a component. When you hover over that component ref
   ## Title
   You can use `markdown` in this.
 -->
+```
+
+### Only run js on client
+
+This is helpful for things like "window.*" or things that need a DOM to run.
+
+```js
+import { browser } from '$app/environment';
+
+if(browser){
+  return getComputedStyle(document.documentElement).getPropertyValue('--bs-primary');
+}
 ```
