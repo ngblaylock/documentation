@@ -156,3 +156,16 @@ if(browser){
   return getComputedStyle(document.documentElement).getPropertyValue('--bs-primary');
 }
 ```
+
+### Constant variable in each block
+
+[https://svelte.dev/repl/00e2468ea1b147acb25a679a1fbcb12a?version=3.46.0](https://svelte.dev/repl/00e2468ea1b147acb25a679a1fbcb12a?version=3.46.0)
+
+In short: 
+
+```html
+{#each boxes as box}
+  {@const area = box.width * box.height}
+  ...
+{/each}
+```
