@@ -87,7 +87,29 @@ export const trailingSlash = 'always';
 
 ## Error Page
 
-I haven't quite figured this out, but the +error.svelte page does not directly transfer over to the 404.html page. I need to look into this a little more.
+Make a page called `+error.svelte` at the root of the route directory and add this to get started:
+
+```html
+<script lang="ts">
+  import { page } from '$app/stores';
+</script>
+
+<h1>{$page.status} {$page.error?.message}</h1>
+<a href="/" class="btn btn-secondary">Home Page</a>
+```
+
+Assuming that the adapter is `adapter-static` make sure you have this in your `svelte.config.js` file before deploying to Firebase or GitHub Pages:
+
+```js
+const config = {
+  extensions: ['.svelte', '.md'],
+  kit: {
+    adapter: adapter({
+      fallback: '404.html',
+    }),
+  },
+}
+```
 
 ## Deploying to GitHub Pages
 
