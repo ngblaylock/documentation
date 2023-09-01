@@ -115,22 +115,31 @@ I don't know how to do this at a sub path, this will only work at a subdomain se
 
 ## Nuggets
 
-### Analytics
+### Google Analytics
 
-https://github.com/sveltejs/kit/issues/3127#issuecomment-1225840065
+This stems from this [issue thread](https://github.com/sveltejs/kit/issues/3127#issuecomment-1225840065). **Make sure that "Enhanced Measurement" is turned on in Google Analytics or this will not work!**
+
+Make a component like `Analytics.svelte` and add the following code (replacing the G-XXXXXXXXXX).
 
 ``` html
-<!-- src/routes/+layout.svelte -->
 <script>
-  import '$lib/javascript-that-should-run-before-hydration.js';
-  import './global.css';
-  import { afterNavigate } from '@sveltejs/kit';
-  
+  // @ts-nocheck
+  import { afterNavigate } from '$app/navigation';
+
   afterNavigate(() => {
-    // this will run after every single navigation, making it an
-    // ideal place to put e.g. analytics tracking code etc
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX');
   });
 </script>
+
+<svelte:head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+</svelte:head>
 ```
 
 ### Comments in VS Code on hover
