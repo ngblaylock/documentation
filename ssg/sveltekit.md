@@ -124,22 +124,25 @@ Make a component like `Analytics.svelte` and add the following code (replacing t
 ``` html
 <script>
   // @ts-nocheck
+  import { dev } from '$app/environment';
   import { afterNavigate } from '$app/navigation';
 
   afterNavigate(() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
+    if (!dev) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
     }
-    gtag('js', new Date());
-
-    gtag('config', 'G-XXXXXXXXXX');
   });
 </script>
 
 <svelte:head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 </svelte:head>
+
 ```
 
 ### Comments in VS Code on hover
