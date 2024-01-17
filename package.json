@@ -1,16 +1,11 @@
 {
-  "name": "documentation",
-  "version": "1.0.0",
-  "description": "Nathan's documentation",
-  "main": "index.js",
-  "repository": "https://github.com/ngblaylock/documentation.git",
-  "author": "Nathan Blaylock <ngblaylock@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
-    "vuepress": "^1.5.4"
+    "vitepress": "^1.0.0-rc.39",
+    "vue": "^3.4.14"
   },
   "scripts": {
-    "dev": "vuepress dev",
-    "build": "vuepress build"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   }
 }
