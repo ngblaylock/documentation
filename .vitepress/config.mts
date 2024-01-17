@@ -18,6 +18,7 @@ export default defineConfig({
     sidebar: [
       {
         text: "Static Site Generators",
+        collapsed: true,
         items: [
           { text: "Eleventy", link: "/ssg/eleventy" },
           { text: "Nuxt", link: "/ssg/nuxt" },
@@ -26,6 +27,7 @@ export default defineConfig({
       },
       {
         text: "Firebase",
+        collapsed: true,
         items: [
           { text: "Getting Started", link: "/firebase/getting-started" },
           { text: "Authentication", link: "/firebase/authentication" },
@@ -38,6 +40,7 @@ export default defineConfig({
       },
       {
         text: "Toolkit",
+        collapsed: true,
         items: [
           { text: "Bootstrap", link: "/toolkit/bootstrap" },
           { text: "CSS Snacks", link: "/toolkit/css-snacks" },
@@ -50,6 +53,7 @@ export default defineConfig({
       },
       {
         text: "Other",
+        collapsed: true,
         items: [
           { text: "Desktop Apps", link: "/other/desktop-apps" },
           { text: "Extras", link: "/other/extras" },
