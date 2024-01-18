@@ -34,7 +34,7 @@ In this example, the `@` would be for `bar.com`, the `www` would be for `www.bar
 
 Here a some specific helpful gitignore items that I should include in my little projects.
 
-```gitignore
+```txt
 node_modules
 .DS_Store
 ```

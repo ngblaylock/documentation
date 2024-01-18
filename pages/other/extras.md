@@ -4,7 +4,7 @@ This is just a bunch of extra features that I like to have close by.
 
 ## Profile - No Image
 
-These are some profile images that you can use in whatever project you want. I specifically made these at probable sizes that you might find you need. Otherwise, if you need something different then you can use [placehold.it](https://placehold.it) or [LoremPixel](http://lorempixel.com). If you want to download the raw file and make edits, you can get it [here](/no-picture.afdesign).
+These are some profile images that you can use in whatever project you want. I specifically made these at probable sizes that you might find you need. Otherwise, if you need something different then you can use [placehold.it](https://placehold.it) or [LoremPixel](http://lorempixel.com). If you want to download the raw file and make edits, you can get it <a href="/no-picture.afdesign" target="_blank">here</a>.
 
 <img src="/noimage-300x300.png" style="max-height: 200px;">
 <img src="/noimage-300x400.png" style="max-height: 200px;">

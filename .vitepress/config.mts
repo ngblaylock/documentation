@@ -5,11 +5,12 @@ export default defineConfig({
   title: "Documentation",
   description: "Nathan Blaylock Media",
   cleanUrls: true,
+  srcDir: './pages',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/nb-docs.png',
     nav: [
-      { text: "Firebase", link: "/firebase/getting-started" },
+      { text: "Firebase", link: "/firebase/" },
       { text: "Eleventy", link: "/ssg/eleventy" },
       { text: "Nuxt", link: "/ssg/Nuxt" },
       { text: "Sveltekit", link: "/ssg/Sveltekit" },
@@ -29,7 +30,7 @@ export default defineConfig({
         text: "Firebase",
         collapsed: true,
         items: [
-          { text: "Getting Started", link: "/firebase/getting-started" },
+          { text: "Getting Started", link: "/firebase/" },
           { text: "Authentication", link: "/firebase/authentication" },
           { text: "Emulator", link: "/firebase/emulator" },
           { text: "Firestore", link: "/firebase/firestore" },
