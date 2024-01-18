@@ -2,16 +2,7 @@
 
 ## Getting Started
 
-Eleventy is a very easy static site generator to use. I was at first discouraged by the documentation, and it seemed like it had a lot in there. The more I use it the more it makes sense. The first thing that I did was followed along with this [blog](https://www.digitalocean.com/community/tutorials/js-eleventy) and this [video](https://www.learnwithjason.dev/let-s-learn-eleventy) which helped out a lot.
-
-## Installation
-
-In the blog, they had you globally install Eleventy, but later I found in the 11ty documentation that it is best to locally install it. First, you need to initialize a npm project, then install Eleventy.
-
-```bash
-npm init -y
-npm install --save-dev @11ty/eleventy rimraf cross-env
-```
+I wrote a [blog article](https://dev.to/ngblaylock/how-i-set-up-a-project-with-eleventy-31gc) on this. It's been a while, but I think it is still applicable.
 
 ## Sass
 
