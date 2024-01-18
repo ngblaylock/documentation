@@ -1,6 +1,6 @@
 # Firestore
 
-Before doing any work here, you will need to configure your app using the code from the [Firebase](/firebase/README.md) page.
+Before doing any work here, you will need to configure your app using the code from the [Firebase](/firebase/) page.
 
 ## Read Data
 
