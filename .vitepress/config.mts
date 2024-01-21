@@ -10,10 +10,10 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     logo: '/nb-docs.png',
     nav: [
-      { text: "Firebase", link: "/firebase/" },
       { text: "Eleventy", link: "/ssg/eleventy" },
-      { text: "Nuxt", link: "/ssg/Nuxt" },
-      { text: "Sveltekit", link: "/ssg/Sveltekit" },
+      { text: "Nuxt", link: "/ssg/nuxt" },
+      { text: "Sveltekit", link: "/ssg/sveltekit" },
+      { text: "Firebase", link: "/firebase/" },
     ],
 
     sidebar: [
@@ -43,7 +43,8 @@ export default defineConfig({
         text: "Toolkit",
         collapsed: true,
         items: [
-          { text: "Bootstrap", link: "/toolkit/bootstrap" },
+          { text: "Bootstrap 4", link: "/toolkit/bootstrap-4" },
+          { text: "Bootstrap 5", link: "/toolkit/bootstrap-5" },
           { text: "CSS Snacks", link: "/toolkit/css-snacks" },
           { text: "Forms", link: "/toolkit/forms" },
           { text: "GitHub", link: "/toolkit/github" },

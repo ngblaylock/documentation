@@ -76,9 +76,9 @@ or
 
 ## Generating a Static Site
 
-To generate a static website you must set the adapter to `@sveltejs/adapter-static` in the svelte.config.js file. That way when you run `npm run build` it makes a static site instead of a SSR website.
+To generate a static website you must set the adapter to `@sveltejs/adapter-static` in the `svelte.config.js` file. That way when you run `npm run build` it makes a static site instead of a SSR website.
 
-Another important thing to add is create a `+layout.**ts**` at the root of the `src` directory. Add the following to that file:
+Another important thing to add is create a `+layout.ts` at the root of the `src` directory. Add the following to that file:
 
 ```ts
 export const prerender = true;
@@ -113,9 +113,13 @@ const config = {
 
 ## Deploying to GitHub Pages
 
+::: info Alternative Option
+Instead of this process here, you can use GitHub Actions. See [SvelteKit's Documentation](https://kit.svelte.dev/docs/adapter-static#github-pages) for details
+:::
+
 One thing that tripped me up was that there were a lot of files that were ignored from GitHub Pages. After doing research and waiting for the domain to correctly register, I found that directories and files preceding with an `_` are ignored by default. To fix this, simply add a `.nojekyll` file in the static directory. This is an empty file and you don't need to do anything but create it.
 
-The next thing to do is to change the output directory from `build` to `docs`. In the `svelte.config.js` file, make sure the folowing is there:
+The next thing to do is to change the output directory from `build` to `docs`. In the `svelte.config.js` file, make sure the following is there:
 
 ```js
 import adapter from '@sveltejs/adapter-static';
@@ -181,7 +185,7 @@ Add this to the beginning of a component. When you hover over that component ref
 
 ### Only run js on client
 
-This is helpful for things like "window.*" or things that need a DOM to run.
+This is helpful for things like "window.*" or things that need a DOM to run. You can also use the `OnMount()` hook.
 
 ```js
 import { browser } from '$app/environment';

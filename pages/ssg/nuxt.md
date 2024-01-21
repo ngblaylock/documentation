@@ -13,7 +13,7 @@ npx create-nuxt-app <project-name>
 
 ## Cloned Nuxt Project from GitHub
 
-When using a GitHub repository for your Nuxt project, it will ignore the dependencies in the `.gitattributes` file by default. This is so you don't have to store all those files that are easily installed through NPM. This means that when you clone the repository back down to another computer the dependencies required to run `npm run dev` will be missing and will not work. Run the following for it to load properly.
+When using a GitHub repository for your Nuxt project, it will ignore the dependencies in the `.gitignore` file by default. This is so you don't have to store all those files that are easily installed through NPM. This means that when you clone the repository back down to another computer the dependencies required to run `npm run dev` will be missing and will not work. Run the following for it to load properly.
 
 ```sh
 npm install

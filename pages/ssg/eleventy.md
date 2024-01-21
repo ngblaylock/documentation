@@ -6,6 +6,10 @@ I wrote a [blog article](https://dev.to/ngblaylock/how-i-set-up-a-project-with-e
 
 ## Sass
 
+::: warning
+This shows using Bootstrap 4 which uses `node-sass`. Start using Bootstrap 5 using `sass`.
+:::
+
 I like to use Sass for my projects, specifically to compile Bootstrap v4. Bootstrap uses node-sass, so using the same compiler is best. Unfortunately, there isn't a really good plugin with Eleventy for node-sass, but there is an effective workaround.
 
 :::tip NOTE
@@ -32,12 +36,12 @@ In your `package.json` file, use the following scripts. You will need to change 
 }
 ```
 
-In your `.eleventy.config` you need to make sure that eleventy is aware of when your Sass file changes to rebuild the site. This filepath will need to point to wherever you keep your Sass files. You do not need to worry about any passthrough copy since Node Sass will compile your scripts directly to the output folder if you configure it correctly.
+In your `.eleventy.js` file you need to watch any of those outputs in order for hot reloading to work.
 
 ```js
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setBrowserSyncConfig({
-    files: "./dev/styles/*.css",
+  eleventyConfig.setServerOptions({
+    watch: ["dev/**/*.css"], // or whatever output path you set Sass to use.
   });
 };
 ```
@@ -53,14 +57,15 @@ This is my personal preference for the file setup. All of the template files, in
 In the root of the project you should put all your other non-template containing files like styles, scripts, or other assets. These are folders that you would normally use the file passthrough copy.
 
 ```
-/assets
+/assets (pdf, non-image files)
 /img
 /js
 /pages
   |  _data/
   |  _includes/
   |  _layouts/
-  |  (Eleventy Template files)
+  |  index.njk
+  |  (Other Eleventy Template files)
 /scss
   |  (Sass files here)
 ```
@@ -78,6 +83,10 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("style");
+
+  eleventyConfig.setServerOptions({
+    watch: ["dev/**/*.css"],
+  });
 
   // Output
   return {
@@ -115,7 +124,7 @@ Make sure that you run cross-env then immediately 11ty. Otherwise, your environm
 
 ## Layouts
 
-Layouts are where Eleventy's power comes from. Unlike Nuxt, Eleventy is not opinionated about the JavaScript framework that you choose. You can use jQuery with Bootstrap 4 without needing to worry about any collisions with Vue.
+Layouts are where Eleventy's power comes from. Unlike Nuxt, Eleventy is not opinionated about the JavaScript framework that you choose. You can use jQuery with Bootstrap 4 without needing to worry about any collisions with Vue. My default choice is to use Bootstrap 5 with Alpine. Bootstrap 5 doesn't require jQuery, and Vue has similar syntax to Nunjucks so Alpine is a good alternative.
 
 1. Create a `_layouts` folder in the `pages` directory.
 2. Add a layout. You can call it whatever you want, but probably go with something like `default.njk`.
@@ -129,40 +138,28 @@ Create a new file called `default.njk` in the `pages/_layouts/` directory.
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/styles/custom.css" />
-    <title>{{ title }} | 11ty Sandbox</title>
   </head>
   <body>
     {{ content | safe }}
-    <!-- JS, Popper.js, and jQuery -->
     <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
   </body>
 </html>
 ```
 
-Notice that `content | safe` is where the input content will be placed. Also, the `title` is a piece of dynamic content brought in from the front matter.
+Notice that `content | safe` is where the input content will be placed. Also, the `title` is a piece of dynamic content brought in from the frontmatter.
 
 The next page to create is the content that is placed in the template. Call this one `/index.njk`.
 
@@ -174,24 +171,20 @@ title: Home
 
 <div class="container pt-5">
   <h1>11ty Test</h1>
-  <p>
-    Something here...
-  </p>
+  <p>Something here...</p>
 </div>
 ```
 
 ### Nest Layouts
 
-You can next layouts, which is pretty neat. For example, if you have a content page where all pages need to use the container, or another page for a blog, or a left nav. Create a page called `_layouts/content.njk`.
+You can nest layouts, which is pretty neat. For example, if you have a content page where all pages need to use the container, or another page for a blog, or a left nav. Create a page called `_layouts/content.njk`.
 
 ```html
 ---
 layout: default
 ---
 
-<div class="container my-3">
-  {{ content | safe }}
-</div>
+<div class="container my-3">{{ content | safe }}</div>
 ```
 
 Then in all the pages that use the content, change the layout in the frontmatter from `default` to `content`.
@@ -211,18 +204,6 @@ Now you will not need to add the layout to each page's frontmatter data. If for 
 ## Language Preference
 
 Eleventy has quite a few options for languages that you can choose from. My preference is to use Nunjucks and Markdown. I started out with Liquid because their documentation was easier to pick up, but I had issues with reversing a collection, and Nunjucks didn't. Nunjucks also seems more powerful. However, [Liquid is significantly faster than Nunjucks](https://github.com/11ty/eleventy-benchmark), so if you are not doing anything more than just basic stuff, go with Liquid.
-
-## Vue with Eleventy
-
-::: v-pre
-It took me a while to figure out that the issue I was having with using Vue with Eleventy is that there was some syntax collisions with Nunjucks/Liquid and Vue. Both use `{{ double curly brackets }}` syntax, so using Vue in a standard template will try to convert the template before Vue. Super big thanks to [Raymond Camden's Article](https://www.raymondcamden.com/2020/04/03/quick-tip-on-using-vue-with-eleventy) for helping me find a solution. Simply wrap the entire vue section with a raw statement, and it will not convert the template syntax, so on the output directory, it will then allow Vue to run as expected.
-:::
-
-```js
-{% raw %}
-// vue code, probably the whole file.
-{% endraw %}
-```
 
 ## Better Logging
 
@@ -260,10 +241,6 @@ module.exports = (eleventyConfig) => {
 };
 ```
 
-## BrowserSync
-
-BrowserSync is pretty cool, but sometimes you will notice that if you scroll on one page, then see the same page in a different tab or device, it will also scroll. You can turn this off by going to the BrowserSync tools (after you run the serve command) and turn it off.
-
 ## Extensions
 
 ### Better Nunjucks (ginfuru)
@@ -276,10 +253,10 @@ Beware that this also tries to mess with `.html` files, even if you are not usin
 
 ### Path Autocomplete (Mihai Vilcu)
 
-Help with your VS Code intellisense to know what files you are trying to link to. You can set the root to the `dist` directory to get accurate linking.
+Help with your VS Code intellisense to know what files you are trying to link to. You can set the root to the `dev` directory to get accurate linking.
 
 - Typing `partials/` will show the contents of the partials folder.
-- Typing `/` will look in the `dist` directory so you can easily select pages or assets to link to with their correct file path, like images or linking to a page.
+- Typing `/` will look in the `dev` directory so you can easily select pages or assets to link to with their correct file path, like images or linking to a page.
 
 Below is an example of ways this will help. Put the following in your workspace settings:
 
@@ -287,7 +264,7 @@ Below is an example of ways this will help. Put the following in your workspace 
 {
   "path-autocomplete.pathMappings": {
     "partials": "${folder}/pages/_includes/partials",
-    "$root": ["${folder}/dist"]
+    "$root": ["${folder}/dev"]
   }
 }
 ```
