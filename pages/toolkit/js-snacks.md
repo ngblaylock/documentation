@@ -64,6 +64,16 @@ const everyItem = items.every((item) => {
 /[\w\.\-]+@(\w+(\.\w+){1,})/g
 ```
 
+## Functions
+
+### Random UID
+
+```js
+let uid = 'u' + Math.random().toString(26).slice(2); // -> 'ueccc564p2ec'
+// or
+let uuid = 'u' + crypto.randomUUID(); // -> 'u27842a10-c0d1-444f-91b4-a142f0f07f24'
+```
+
 ### Slugify
 
 
@@ -171,7 +181,7 @@ var toggle = (target, duration = 200) => {
 module.exports = {up, down, toggle}
 ```
 
-### Get URL Parameter
+## Get URL Parameter
 
 ``` js
 //  https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
