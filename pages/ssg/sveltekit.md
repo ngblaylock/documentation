@@ -139,6 +139,34 @@ Then in GitHub make sure the pages is hosted from the master branch at /docs.
 
 I don't know how to do this at a sub path, this will only work at a subdomain setup.
 
+## Create Elemental Components
+
+I really like how Nuxt will auto-import components for you. There are libraries out there for this, but they all seem to have some shortcomings. This is my solution that isn't automatic, but just a one-liner.
+
+You can add these files:
+
+``` svelte
+// src/components/Elemental/Btn.svelte
+<button class="btn btn-primary"><slot /></button>
+```
+
+``` ts
+// src/components/Elemental/index.ts
+export { default as Btn } from './Btn.svelte';
+```
+
+And use it like this:
+
+``` svelte
+<script lang="ts">
+  import * as E from '$components/Elemental';
+</script>
+
+<E.Btn>Hello</E.Btn>
+```
+
+I would recommend that you add a snippet for each one. You would probably want to do that anyway.
+
 ## Nuggets
 
 ### Google Analytics
