@@ -31,4 +31,5 @@
 ## Other
 
 - Forms submit successfully
+- 404 Page works
 - DevNotes should not show up
