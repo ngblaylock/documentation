@@ -12,7 +12,7 @@ export default defineConfig({
     nav: [
       { text: "Eleventy", link: "/ssg/eleventy" },
       { text: "Nuxt", link: "/ssg/nuxt" },
-      { text: "Sveltekit", link: "/ssg/sveltekit" },
+      { text: "SvelteKit", link: "/ssg/sveltekit" },
       { text: "Firebase", link: "/firebase/" },
     ],
 

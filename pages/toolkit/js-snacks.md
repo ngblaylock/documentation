@@ -10,7 +10,17 @@ These are just some helpful snippets I found.
 /[\w\.\-]+@(\w+(\.\w+){1,})/g
 ```
 
-### Slugify 
+## Functions
+
+### Random UID
+
+```js
+let uid = 'u' + Math.random().toString(26).slice(2); // -> 'ue1cc564p2ec'
+// or
+let uuid = 'u' + crypto.randomUUID(); // -> 'u27842a10-c0d1-444f-91b4-a142f0f07f24'
+```
+
+### Slugify
 
 ::: Actually...
 Just use the [slugify](https://www.npmjs.com/package/slugify) package from NPM.
@@ -124,7 +134,7 @@ var toggle = (target, duration = 200) => {
 module.exports = {up, down, toggle}
 ```
 
-### Get URL Parameter
+## Get URL Parameter
 
 ::: Actually...
 Just use the [query-string](https://www.npmjs.com/package/query-string) package from NPM.
