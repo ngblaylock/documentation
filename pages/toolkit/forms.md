@@ -41,6 +41,6 @@ Credit for the script goes to [Thryv](https://www.thryv.com/blog/honeypot-techni
 
 ## Other Form Services
 
-- [Cognito Forms](https://www.cognitoforms.com/) - You can use the Chameleon styles to help you style it to fit your site. This also has built-in spam protection so you don't have to worry about a honeypot.
-- [Formspree](https://formspree.io/)
-- [JotForm](https://www.jotform.com/)
+- [Cognito Forms](https://www.cognitoforms.com/) - You can use the Chameleon styles to help you style it to fit your site. This also has built-in spam protection so you don't have to worry about a honeypot. You can make use of the Sass `@extend` feature to add Bootstrap classes to the Cognito classes.
+- [Formspree](https://formspree.io/) - Costs money
+- [JotForm](https://www.jotform.com/) - Haven't really tried it, but it looks good.

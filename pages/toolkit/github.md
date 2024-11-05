@@ -43,12 +43,6 @@ node_modules
 
 Cloning a Private Repo is pretty easy if you are using the GitHub CLI tools. Make sure that you have downloaded [GitHub CLI](https://cli.github.com/) from the website. When you first try to run a command, it will ask you to log in to your account. Do that. Then, under the "Download Code" dropdown in the repository you want to select the "GitHub CLI" option.
 
-The old way I did this was by doing some weird clone where you put your username and password in the command. Supposedly, this option is going away in August 2021. This option works better. 
-
-::: tip NOTE
+::: tip Actually...
 If you use GitHub Desktop, you can clone private repos in the app, so you don't need to do this.
 :::
-
-## GitHub Actions Deploy
-
-Use the code snippets from [peaceiris](https://github.com/peaceiris/actions-gh-pages) if you don't want to build your site on your personal machine. This is used in this documentation so I can edit files on GitHub and just commit them to deploy the new site.
