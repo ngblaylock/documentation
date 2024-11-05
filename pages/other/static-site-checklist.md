@@ -32,4 +32,12 @@
 
 - Forms submit successfully
 - 404 Page works
-- DevNotes should not show up
+- DevNotes should not show up in production
+
+## Browsers
+
+- Chrome
+- Firefox
+- Safari
+- Safari iPhone
+- Safari iPad
