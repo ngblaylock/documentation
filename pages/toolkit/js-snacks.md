@@ -1,60 +1,6 @@
 # JS Snacks
 
-These are just some helpful snippets I found and compiled.
-
-## Array Functions
-
-```js
-let items = [
-  { name: "boat", price: 200 },
-  { name: "car", price: 150 },
-  { name: "plane", price: 1200 },
-  { name: "motorcycle", price: 50 },
-  { name: "tractor", price: 100 },
-];
-
-items.forEach((item) => {
-  console.log(item.name);
-  // do not return anything
-  // simply do something
-});
-
-const filteredItems = items.filter((item) => {
-  return item.price <= 100;
-  // return a true or false statement
-  // if returns true, it is added to the new array
-  // else does not add to the new array
-});
-
-const reducedItems = items.reduce((currentTotal, item) => {
-  return currentTotal + item.price;
-  // returns a single value
-  // takes the current total, then the array
-  // also takes a callback which is the starting number
-}, 0);
-
-const mapItems = items.map((item) => {
-  return item.price * 2;
-  // returns a new array
-});
-
-const findItem = items.find((item) => {
-  return item.name == "tractor";
-  // will return the first item found that passes
-});
-
-const someItem = items.some((item) => {
-  return item.name == "car";
-  // true, at least one item name is car
-  // returns a true or false statement
-});
-
-const everyItem = items.every((item) => {
-  return item.name == "car";
-  // false, not every item name is car
-  // returns a true or false statement
-});
-```
+These are just some helpful snippets I found.
 
 ## Regular Expressions
 
@@ -69,13 +15,16 @@ const everyItem = items.every((item) => {
 ### Random UID
 
 ```js
-let uid = 'u' + Math.random().toString(26).slice(2); // -> 'ueccc564p2ec'
+let uid = 'u' + Math.random().toString(26).slice(2); // -> 'ue1cc564p2ec'
 // or
 let uuid = 'u' + crypto.randomUUID(); // -> 'u27842a10-c0d1-444f-91b4-a142f0f07f24'
 ```
 
 ### Slugify
 
+::: Actually...
+Just use the [slugify](https://www.npmjs.com/package/slugify) package from NPM.
+:::
 
 ```js
 // By Matthias Hagemann, https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1)
@@ -99,7 +48,11 @@ slugify: function(string) {
 },
 ```
 
-### Vanilla JS Slide
+### Vanilla JS Slide 
+
+::: Actually...
+Just use the [slide-element](https://www.npmjs.com/package/slide-element) package from NPM.
+:::
 
 Vanilla JS and CSS don't handle expanding up and down when there is an auto height. I found this script online that works really well as a replacement to jQuery's `slideIn()`, `slideOut()`, `slideToggle()` functions. This example is set up for a node environment. 
 
@@ -183,6 +136,10 @@ module.exports = {up, down, toggle}
 
 ## Get URL Parameter
 
+::: Actually...
+Just use the [query-string](https://www.npmjs.com/package/query-string) package from NPM.
+:::
+
 ``` js
 //  https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 function getParameterByName(name, url) {
@@ -263,40 +220,6 @@ function detectIEEdge() {
 if(detectIEEdge()){
   // Alert if the browser is IE or Edge
   alert("Please don't use edge or Internet Explorer")
-}
-```
-
-## Node Batch Rename Files
-
-This specific script is good for taking a bunch of Word document files named by date, and copying them to a different folder with a easy to use naming convention. For example, `January 5 2020.docx` to `2020-01-05.docx`. Then when sorting the files it will be by the date rather than the name, which wouldn't put them in any specific order. 
-
-This script could really use some touching up, but this was just a quick and dirty way that I put together to do a specific group of files. It would be best to test this out with a few files to make sure you don't get something that you really don't want. 
-
-1. Create a new folder and `cd` into it.
-2. Do a `npm init -y` to start a new node project with the defaults. 
-3. Install Moment.js with `npm i moment`
-4. Create a new folder in the root directory called `converted`
-5. In the root directory, move all the files you want to convert. Double check that they are in some readable date-like format that Moment.js can understand.
-6. Create a file called `index.js` and put in the following:
-
-``` js
-const moment = require("moment");
-const fs = require("fs");
-const path = require("path");
-
-const files = fs.readdirSync(__dirname);
-
-for (const file of files) {
-  if (file.endsWith(".docx")) {
-    const fileName = path.basename(file, ".docx");
-    const newName = moment(fileName).format("YYYY-MM-DD");
-    console.log(newName);
-
-    fs.copyFile(file, `converted/${newName}.docx`, (err) => {
-      if (err) throw err;
-      console.log(`${fileName} Has been converted to ${newName}`);
-    });
-  }
 }
 ```
 

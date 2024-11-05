@@ -1,5 +1,7 @@
 # SvelteKit
 
+Now that I have moved to Svelte 5, these docs should be focused on that version.
+
 ## Configuration
 
 You can add alias' to certain folders for importing. It is handy especially since there are no auto imports. VS Code can help with the import process, but having this sort of alias is handy to help it find what you are looking for.
@@ -39,38 +41,30 @@ const config = {
 
 SvelteKit comes with the preprocessor already available. All you need to do is run `npm install Sass -D`. 
 
-To make variables accessible from any and add the following to svelte.config.js.
+To make variables accessible from any and add the following to `svelte.config.js`. The file paths are relative to the config file.
 
 ``` js
-import preprocess from 'svelte-preprocess';
+import {sveltePreprocess} from 'svelte-preprocess';
 
 const config = {
-    preprocess: preprocess({
-        scss: {
-            prependData: `@import './src/style/app.scss';`
-        }
-    })
-    ...
+  preprocess: [
+    sveltePreprocess({
+      scss: {
+        prependData: `
+          @import './src/sass/_variables.scss';
+          @import './node_modules/bootstrap/scss/mixins/_breakpoints.scss';
+        `,
+      },
+    }),
+  ],
 };
 ```
 
-To add global styles to all pages, add the following to the main +layout.svelte file.
+To add global styles to all pages, add the following to the main `+layout.svelte` file.
 
 ```html
-<svelte:head>
-	<style lang="scss">
-		@import '../sass/style.scss';
-	</style>
-</svelte:head>
-
-<slot />
-```
-
-or
-
-```html
-<script lang="ts">
-  import '../sass/style.scss'
+<script>
+  import '../sass/style.scss';
 </script>
 ```
 
@@ -78,9 +72,20 @@ or
 
 To generate a static website you must set the adapter to `@sveltejs/adapter-static` in the `svelte.config.js` file. That way when you run `npm run build` it makes a static site instead of a SSR website.
 
-Another important thing to add is create a `+layout.ts` at the root of the `src` directory. Add the following to that file:
+```js
+import adapterStatic from '@sveltejs/adapter-static';
 
-```ts
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  kit: {
+    adapter: adapterStatic(),
+  },
+}
+```
+
+Another important thing to add is create a `+layout.js` at the root of the `src` directory. Add the following to that file:
+
+```js
 export const prerender = true;
 export const trailingSlash = 'always';
 ```
@@ -90,21 +95,23 @@ export const trailingSlash = 'always';
 Make a page called `+error.svelte` at the root of the route directory and add this to get started:
 
 ```html
-<script lang="ts">
+<script>
   import { page } from '$app/stores';
 </script>
 
-<h1>{$page.status} {$page.error?.message}</h1>
-<a href="/" class="btn btn-secondary">Home Page</a>
+<h1>{$page.status} - {$page.error?.message}</h1>
+<a href="/">Home Page</a>
 ```
 
 Assuming that the adapter is `adapter-static` make sure you have this in your `svelte.config.js` file before deploying to Firebase or GitHub Pages:
 
 ```js
+import adapterStatic from '@sveltejs/adapter-static';
+
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-  extensions: ['.svelte', '.md'],
   kit: {
-    adapter: adapter({
+    adapter: adapterStatic({
       fallback: '404.html',
     }),
   },
@@ -122,22 +129,55 @@ One thing that tripped me up was that there were a lot of files that were ignore
 The next thing to do is to change the output directory from `build` to `docs`. In the `svelte.config.js` file, make sure the following is there:
 
 ```js
-import adapter from '@sveltejs/adapter-static';
+import adapterStatic from '@sveltejs/adapter-static';
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter({
+    adapter: adapterStatic({
       pages: 'docs',
       assets: 'docs',
-    })
-  }
-};
-
+    }),
+  },
+}
 ```
 
 Then in GitHub make sure the pages is hosted from the master branch at /docs. 
 
 I don't know how to do this at a sub path, this will only work at a subdomain setup.
+
+## Typings
+
+With Svelte 5 I guess it is recommended to just use JS instead of TS and use jsDoc syntax for typings. I'm okay with this, but I am learning a few things as I go along. Here are some things that were hard to find.
+
+### Children Props
+
+```js
+/**
+ * @type {{
+ *  href: string,
+ *  theme: string,
+ *  children: import('svelte').Snippet
+ *  class?: string
+ * }}
+ */
+let { href = '', theme = 'primary', children, class: classList = '' } = $props();
+```
+
+### Class Props
+
+```html
+<script>
+/**
+ * @type {{
+ *  class?: string
+ * }}
+ */
+let { class: classList = '' } = $props();
+</script>
+
+<div class="{classList}">Hello World</div>
+```
 
 ## Create Elemental Components
 

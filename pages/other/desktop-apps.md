@@ -20,14 +20,15 @@
   - Publisher
 - Amphetamine
 - App Cleaner
-- Backup and Sync
 - Bitwarden
 - Chrome
 - Figma
 - Firefox
 - GitHub Desktop
+- Google Drive
 - Handbrake
 - NVM
+- Pandora (Chrome Shortcut)
 - SiteSucker
 - Slack
 - VS Code

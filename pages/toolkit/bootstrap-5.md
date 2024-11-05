@@ -6,36 +6,17 @@ This is how I find it best to organize my custom Bootstrap 5 Sass files. Run `np
 
 ```
 scss
-  | __setup.scss
-  | _map-merge.scss
-  | _map-remove.scss
-  | _variables.scss
+  | _bs-options.scss
+  | _bs-setup.scss
+  | _bs-variable-overrides.scss
   | site.scss
 ```
 
-::: details \_\_setup.scss
+::: details \_bs-options.scss
 
-You may need to adjust the file path for `node_modules`
+Comment out any files that you don't need in your application.
 
 ```scss
-@import "../node_modules/bootstrap/scss/mixins/banner";
-@include bsBanner("");
-
-// Configuration
-@import "../node_modules/bootstrap/scss/functions";
-
-@import "variables";
-
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/variables-dark";
-
-@import "../node_modules/bootstrap/scss/maps";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/utilities";
-
-@import "map-merge";
-@import "map-remove";
-
 // Layout & components
 @import "../node_modules/bootstrap/scss/root";
 @import "../node_modules/bootstrap/scss/reboot";
@@ -79,16 +60,25 @@ You may need to adjust the file path for `node_modules`
 
 :::
 
-::: details \_map-merge.scss
+::: details \_bs-setup.scss
+
+Compiling these files without the `bs-options` will only have the banner comment.
 
 ```scss
-$spacers: map-merge(
-  (
-    6: $spacer * 4.5,
-    7: $spacer * 6,
-  ),
-  $spacers
-);
+@import "../node_modules/bootstrap/scss/mixins/banner";
+@include bsBanner("");
+
+// Configuration
+@import "../node_modules/bootstrap/scss/functions";
+
+@import "bs-variable-overrides";
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/utilities";
 
 $utilities: map-merge(
   $utilities,
@@ -98,31 +88,43 @@ $utilities: map-merge(
       class: cursor,
       responsive: true,
       values: auto pointer grab,
-    ),
+    )
   )
 );
-```
 
-:::
-
-::: details _map-remove.scss
-```scss
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 ```
+
 :::
 
-::: details \_variables.scss
+::: details \_bs-variable-overrides.scss
 
 ```scss
-$primary: #531c9c;
+$enable-negative-margins: true;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4.5,
+  7: $spacer * 6,
+);
+
 ```
 
 :::
 
 ::: details site.scss
-```scss
-@import '_setup';
 
-// Any other styles go here or include their file named `_site-<component>.scss`
+```scss
+@import 'bs-setup';
+@import 'bs-options';
+
+// Any other project specific styles go here. Import files as needed for organization.
 ```
+
 :::
