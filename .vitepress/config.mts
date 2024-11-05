@@ -14,6 +14,7 @@ export default defineConfig({
       { text: "Nuxt", link: "/ssg/nuxt" },
       { text: "SvelteKit", link: "/ssg/sveltekit" },
       { text: "Firebase", link: "/firebase/" },
+      { text: "Checklist", link: "/other/static-site-checklist" },
     ],
 
     sidebar: [
