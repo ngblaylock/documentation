@@ -10,6 +10,6 @@ Tranfering a domain from Squarespace to Cloudflare includes the following steps:
 2. Select the free plan
 3. Double check that the records are all present, then click "Continue to Activation"
 4. This gives you two nameservers to update in Squarespace
-5. ... Some more things with connecting
+5. In Squarespace, go to the Domain Nameservers. It will ask to disable some DNSSEC security thing. Click yes.
 6. Once connected, you need to make sure to **Configure the SSL/TLS to Full (strict) encryption mode.** If not, you will not have a working URL.
 7. Now you should be able to start the actual transfer process
