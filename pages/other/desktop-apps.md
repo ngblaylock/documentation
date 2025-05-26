@@ -1,5 +1,9 @@
 # Desktop Setup
 
+## Mac Shortcuts
+
+WHen developing apps and you need a screenshot of the app with the device frame, you can open it up in XCode's Simulator, then run `cmd + shift + 5`, then make sure you take a screenshot of the window. Make sure to hold down `alt` in order to remove the shadow. Then just edit the image to remove the top portion.
+
 ## Preferences
 
 - Set up default File when opening finder
