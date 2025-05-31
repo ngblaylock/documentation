@@ -58,10 +58,11 @@ export default defineConfig({
         text: "Other",
         collapsed: true,
         items: [
-          { text: "Static Site Checklist", link: "/other/static-site-checklist" },
           { text: "Cloudflare", link: "/other/cloudflare" },          
-          { text: "Desktop Apps", link: "/other/desktop-apps" },
           { text: "Extras", link: "/other/extras" },
+          { text: "Mac", link: "/other/mac" },
+          { text: "PWA", link: "/other/pwa" },
+          { text: "Static Site Checklist", link: "/other/static-site-checklist" },
           { text: "Zorin OS", link: "/other/zorin" },
         ],
       },
