@@ -18,6 +18,9 @@ Tranfering a domain from Squarespace to Cloudflare includes the following steps:
 10. After some time you should have a domain transfer code emailed to you from Squarespace. In Cloudflare go to the overview page of the domain and look for "Transfer to Cloudflare". Click the link.
 11. Enter the transfer code in the field provided.
 12. You will need to pay to transfer the domain, so setup payment then continue. The transfer process has begun, and should take 5-ish days to complete.
+13. Once you receive an email saying that the transaction has taken place, you can verify it worked by going to Cloudflare. When you go to Squarespace it should show that it is not connected. Go into the domain and disconnect from your account.
+
+That is all that needs to be done.
 
 ## Static Hosting
 
