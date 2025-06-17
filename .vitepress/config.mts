@@ -47,6 +47,7 @@ export default defineConfig({
           { text: "Bootstrap 4", link: "/toolkit/bootstrap-4" },
           { text: "Bootstrap 5", link: "/toolkit/bootstrap-5" },
           { text: "CSS Snacks", link: "/toolkit/css-snacks" },
+          { text: "Documentation Standards", link: "/toolkit/documentation-standards" },
           { text: "Forms", link: "/toolkit/forms" },
           { text: "GitHub", link: "/toolkit/github" },
           { text: "Icons", link: "/toolkit/icons" },
