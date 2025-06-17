@@ -1,2 +1,0 @@
-# Documentation Standard in Repos
-
