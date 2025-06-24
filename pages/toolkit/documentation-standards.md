@@ -41,4 +41,8 @@ Filenames should be written in Title Case, not kebab-case.
 **Role Name:** [Role Name]
 **Inherits:** [Role Name, if any]
 **Description:** [Responsibility]
+
+## Project Links
+
+- [Website](https://...)
 ```
