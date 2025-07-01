@@ -2,7 +2,7 @@
 
 ## Lesson Learned
 
-::: [!WARNING] Lesson Learned
+::: warning Lesson Learned
 If you customize Bootstrap with Sass, it is best to lock down the version of Bootstrap. Moving from 5.3.3 -> 5.3.7 caused some breaks in my custom CSS. It isn't a breaking change if you don't customize it.
 :::
 
