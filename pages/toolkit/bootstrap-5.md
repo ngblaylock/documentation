@@ -1,5 +1,11 @@
 # Bootstrap 5
 
+## Lesson Learned
+
+::: [!WARNING] Lesson Learned
+If you customize Bootstrap with Sass, it is best to lock down the version of Bootstrap. Moving from 5.3.3 -> 5.3.7 caused some breaks in my custom CSS. It isn't a breaking change if you don't customize it.
+:::
+
 ## Sass Setup
 
 This is how I find it best to organize my custom Bootstrap 5 Sass files. Run `npm install sass bootstrap@5 -D` then set up these files:
