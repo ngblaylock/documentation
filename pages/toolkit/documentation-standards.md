@@ -3,7 +3,7 @@
 Each repo needs to have a folder called `_DOCUMENTATION_` which is a markdown directory of information pertaining to the specific repo. This also makes sure that documentation is tracked in Git and can contain historical documentation. The folder structure should be:
 
 - \_DOCUMENTATION_
-  - Acceptance Criteria: A folder containing types of requirements for the site or package
+  - Acceptance Criteria: A folder containing types of requirements for the site or package. Acceptance criteria should be written as if prefixed with "The system will...".
   - Decisions: A folder containing decisions that I made, like why I went with one library over another, why some CSS is the way it is, why I chose a framework vs another, etc.
   - Processes: A folder containing specific processes, such as development, deployment. This can contain "How To" files or "Gotchas"
   - Project Overview: A file containing basic information about the project.
@@ -48,4 +48,14 @@ Filenames should be written in Title Case, not kebab-case.
 ## Project Links
 
 - [Website](https://...)
+```
+
+## Acceptance Criteria Template
+
+```md
+# [Category Name]
+
+## [The system will... text. Ex. Allow, Provide, Automate]
+
+[Optional context]
 ```
