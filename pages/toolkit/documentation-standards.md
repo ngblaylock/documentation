@@ -28,7 +28,10 @@ Filenames should be written in Title Case, not kebab-case.
 **Frontend:** [Framework(s)]
 **Backend:** [Frameworks(s)]
 **Database:** [Database]
-**Integrations:** [3rd Party Software]
+
+## 3rd Party Integrations
+
+**[Name]:** - [Description]
 
 ## Stakeholders
 
