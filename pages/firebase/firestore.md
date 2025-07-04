@@ -114,7 +114,11 @@ firebase
   });
 ```
 
-Or you can update a single part. It replaces the key that is being updates, but will not erase what is not mentioned.
+Or you can update a single part. It replaces the key that is being updates, but will not erase what is not mentioned. 
+
+::: warning
+Be cautios of this because nested objects need to be spread out to a flat, dot-notation, object. So `{somekey: {nestedKey: 1}}` should be set to `{'somekey.nestedKey': 1}`. If you want to easily update the document, you can use `setDoc` with `{merged: true}` as an additional parameter.
+:::
 
 ```js
 firebase
