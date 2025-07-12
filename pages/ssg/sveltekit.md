@@ -297,6 +297,10 @@ export {};
 </script>
 
 {appVersion}
+
+or
+
+{__APP_VERSION__}
 ```
 
 ### Only run js on client
