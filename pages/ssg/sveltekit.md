@@ -251,6 +251,54 @@ Add this to the beginning of a component. When you hover over that component ref
 -->
 ```
 
+### Include package.json Version on Page
+
+This will dynamically change the version number of your package on a page wherever you need it to show up.
+
+**Step 1.** Define `__APP_VERSION__` in `vite.config.ts`
+
+```ts
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [ sveltekit() ],
+  define: {
+    __APP_VERSION__: JSON.stringify(
+      process.env.npm_package_version || 'unknown',
+    ),
+  },
+});
+
+```
+
+**Step 2.** Add the type to `app.d.ts` to resolve errors
+
+```ts
+declare global {
+  namespace App {
+    // interface Error {}
+    // interface Locals {}
+    // interface PageData {}
+    // interface PageState {}
+    // interface Platform {}
+  }
+  const __APP_VERSION__: string; // Version of the app, set in vite.config.ts
+}
+
+export {};
+```
+
+**Step 3.** Use it in your Svelte page or component
+
+```svelte
+<script lang="ts">
+  let appVersion = __APP_VERSION__;
+</script>
+
+{appVersion}
+```
+
 ### Only run js on client
 
 This is helpful for things like "window.*" or things that need a DOM to run. You can also use the `OnMount()` hook.
