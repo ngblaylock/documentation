@@ -239,6 +239,22 @@ Make a component like `Analytics.svelte` and add the following code (replacing t
 
 ```
 
+### Bootstrap JS
+
+There might be a better way to do this, but this will make sure your styles and JS will be on the same version as opposed to using a specified version with a CDN.
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  
+  onMount(async () => {
+    // @ts-ignore
+    const bootstrap = await import('bootstrap/dist/js/bootstrap.bundle.min.js');
+    window.bootstrap = bootstrap;
+  });
+</script>
+```
+
 ### Comments in VS Code on hover
 
 Add this to the beginning of a component. When you hover over that component reference this will show up.
